@@ -26,7 +26,6 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	JPanel board, buttons;
-	JLabel l;
 	JRadioButton diag, evenOdd, basic;
 	List<JTextField> numBoard = new ArrayList<JTextField>();
 	
@@ -72,9 +71,6 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("ONE")) {
-			l.setText("1");
-		}
 		if (e.getActionCommand().equals("OK")) {
 			int tmpBox = 0;
 			String[] numInBoard = new String[81];
