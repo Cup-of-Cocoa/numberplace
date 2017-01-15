@@ -26,6 +26,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	JPanel board, buttons;
+	JLabel l;
 	JRadioButton diag, evenOdd, basic;
 	List<JTextField> numBoard = new ArrayList<JTextField>();
 	
@@ -71,26 +72,30 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
+		if(e.getActionCommand().equals("ONE")) {
+			l.setText("1");
+		}
 		if (e.getActionCommand().equals("OK")) {
-			int p = 0;
-			String[] a = new String[81];
+			int tmpBox = 0;
+			String[] numInBoard = new String[81];
 			for (int i = 0; i < 11; i++) {
 				for (int j = 0; j < 11; j++) {
 					if (i == 3 || i == 7) continue;
 					else if (j == 3 || j == 7) continue;
 					else {
-						String tmp = numBoard.get(p).getText();
-						if(tmp.equals(""))a[p] = "0";
-						else a[p] = numBoard.get(p).getText();
-						p++;
+						String tmp = numBoard.get(tmpBox).getText();
+						if(tmp.equals(""))numInBoard[tmpBox] = "0";
+						else numInBoard[tmpBox] = numBoard.get(tmpBox).getText();
+						tmpBox++;
 					}
 				}
 			}
 			NanpureSolver n;
-			if (basic.isSelected()) n = new BasicNanpureSolver(a);
-			else if (evenOdd.isSelected()) n = new EvenOddNanpureSolver(a);
-			else if (diag.isSelected()) n = new DiagnoalNanpureSolver(a);
-			else n = new BasicNanpureSolver(a);
+			
+			if (basic.isSelected()) n = new BasicNanpureSolver(numInBoard);
+			else if (evenOdd.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
+			else if (diag.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
+			else n = new BasicNanpureSolver(numInBoard);
 			n.solve();
 		}
 	}
