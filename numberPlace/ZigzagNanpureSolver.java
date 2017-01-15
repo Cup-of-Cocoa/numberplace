@@ -18,7 +18,7 @@ public class ZigzagNanpureSolver extends NanpureSolver{
 			catch(NumberFormatException e) {
 				System.out.println("invalid input: not integer");
 			}
-			if (this.board[i] == 0) remain.add(i);
+			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
 	}
 	
