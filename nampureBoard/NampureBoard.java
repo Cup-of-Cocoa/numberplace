@@ -79,7 +79,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 		numBoard.get(0).setSelected(true);
 		add(boardPanel);
 		//‰ð‚­–â‘è‚ÌŽí—Þ
-		modePanel = new JPanel(new GridLayout(3,1));
+		modePanel = new JPanel(new GridLayout(4,1));
 		basicModeButton = new JRadioButton("Basic", true);
 		diagModeButton = new JRadioButton("Diagnoal");
 		evenOddModeButton = new JRadioButton("Even-Odd");
