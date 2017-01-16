@@ -93,7 +93,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
-		
+
 		ok = new JButton("OK");
 		ok.addActionListener(this);
 		ok.setActionCommand("OK");
@@ -141,10 +141,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
 			else n = new BasicNanpureSolver(numInBoard);
 			n.solve();
-		}
-		
+		}	
 	}
-
 
 	public static void main(String[] args) {
 		SudokuBoard nb = new SudokuBoard();
