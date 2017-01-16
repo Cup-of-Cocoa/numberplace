@@ -20,52 +20,78 @@ import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
-
+import javax.swing.ImageIcon;
 
 public class NampureBoard extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	JPanel board, buttons;
-	JRadioButton diag, evenOdd, basic;
-	List<JTextField> numBoard = new ArrayList<JTextField>();
-	ButtonGroup mode;
+
+	JPanel numbersPanel, boardPanel, modePanel;
+	JRadioButton diagModeButton, evenOddModeButton, basicModeButton;
+	JButton ok;
+	List<JButton> numberButtons = new ArrayList<JButton>();
+	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
+	ButtonGroup boardButtonGroup, modeButtonGroup;
+
 
 	public NampureBoard() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
-		setSize(400, 300);
+		setSize(500, 400);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
+		//数字入力用のボタン
+		numbersPanel = new JPanel(new GridLayout(1,10));
+		JButton space = new JButton("");
+		space.setActionCommand("SPACE");
+		space.addActionListener(this);
+		numbersPanel.add(space);
+		numberButtons.add(space);
+		for(int i = 1; i < 10; i++) {
+			JButton number = new JButton(Integer.toString(i));
+			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
+			number.addActionListener(this);
+			numbersPanel.add(number);
+			numberButtons.add(number);
+		}
+		add(numbersPanel);
 		//数字が入る盤面
-		board = new JPanel();
-		board.setLayout(new GridLayout(11,11));
+		boardPanel = new JPanel(new GridLayout(11,11));
+		boardButtonGroup = new ButtonGroup();
+		ImageIcon box_unselected = new ImageIcon("./box_unselected.png");
+		ImageIcon box_selected = new ImageIcon("./box_selected.png");
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
-				if (i == 3 || i == 7) board.add(new JLabel(" "));
-				else if (j == 3 || j == 7) board.add(new JLabel(" "));
+				if (i == 3 || i == 7) boardPanel.add(new JLabel("　"));
+				else if (j == 3 || j == 7) boardPanel.add(new JLabel("　"));
 				else {
-					JTextField tf = new JTextField(1);
-					board.add(tf);
-					numBoard.add(tf);
+					JRadioButton box = new JRadioButton("", box_unselected);
+					box.setSelectedIcon(box_selected);
+					//tf.setHorizontalTextPosition(JRadioButton.CENTER);
+					box.setBorderPainted(true);
+					boardPanel.add(box);
+					boardButtonGroup.add(box);
+					numBoard.add(box);
 				}
 			}
-
 		}
-		add(board);
-		buttons = new JPanel(new GridLayout(3,1));
-		diag = new JRadioButton("Diagnoal");
-		evenOdd = new JRadioButton("Even-Odd");
-		basic = new JRadioButton("Basic");
-		mode = new ButtonGroup();
-		mode.add(basic);
-		mode.add(diag);
-		mode.add(evenOdd);
-		buttons.add(basic);
-		buttons.add(diag);
-		buttons.add(evenOdd);
-		add(buttons);
-		basic.setSelected(true);
-		JButton ok = new JButton("OK");
+		numBoard.get(0).setSelected(true);
+		add(boardPanel);
+		//解く問題の種類
+		modePanel = new JPanel(new GridLayout(3,1));
+		basicModeButton = new JRadioButton("Basic", true);
+		diagModeButton = new JRadioButton("Diagnoal");
+		evenOddModeButton = new JRadioButton("Even-Odd");
+		modeButtonGroup = new ButtonGroup();
+		modeButtonGroup.add(basicModeButton);
+		modeButtonGroup.add(diagModeButton);
+		modeButtonGroup.add(evenOddModeButton);
+		modePanel.add(basicModeButton);
+		modePanel.add(diagModeButton);
+		modePanel.add(evenOddModeButton);;
+		add(modePanel);
+		
+		ok = new JButton("OK");
 		ok.addActionListener(this);
 		ok.setActionCommand("OK");
 		add(ok);
@@ -73,7 +99,21 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals("OK")) {
+		if (e.getActionCommand().startsWith("N")) {//数字が押されたとき
+			for(int i= 0; i < 81; i++) {
+				if(numBoard.get(i).isSelected()) {
+					numBoard.get(i).setText(e.getActionCommand().substring(1));
+				}
+			}
+		}
+		else if (e.getActionCommand().equals("SPACE")) {
+			for(int i= 0; i < 81; i++) {
+				if(numBoard.get(i).isSelected()) {
+					numBoard.get(i).setText("");
+				}
+			}
+		}
+		else if (e.getActionCommand().equals("OK")) {
 			int tmpBox = 0;
 			String[] numInBoard = new String[81];
 			for (int i = 0; i < 11; i++) {
@@ -90,13 +130,15 @@ public class NampureBoard extends JFrame implements ActionListener{
 			}
 			NanpureSolver n;
 
-			if (basic.isSelected()) n = new BasicNanpureSolver(numInBoard);
-			else if (evenOdd.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
-			else if (diag.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
+			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
+			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
+			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
 			else n = new BasicNanpureSolver(numInBoard);
 			n.solve();
 		}
+		
 	}
+
 
 	public static void main(String[] args) {
 		NampureBoard nb = new NampureBoard();
