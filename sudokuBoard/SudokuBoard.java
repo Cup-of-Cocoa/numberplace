@@ -15,12 +15,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+
 
 import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
+import numberPlace.MiniBasicNanpureSolver;
+import numberPlace.MiniDiagnoalNanpureSolver;
 import javax.swing.ImageIcon;
 
 public class SudokuBoard extends JFrame implements ActionListener{
@@ -33,7 +39,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup, modeButtonGroup;
-
+	private final int BASICSIZE = 1, MINI = 2; 
+	int solverMode = BASICSIZE;
 
 	public SudokuBoard() {
 		setTitle("Number Place");
@@ -59,8 +66,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		//êîéöÇ™ì¸ÇÈî’ñ 
 		boardPanel = new JPanel(new GridLayout(11,11));
 		boardButtonGroup = new ButtonGroup();
-		ImageIcon box_unselected = new ImageIcon("./box_unselected.gif");
-		ImageIcon box_selected = new ImageIcon("./box_selected.gif");
+		ImageIcon box_unselected = new ImageIcon("/Game/src/sudokuBoard/box_unselected.png");
+		ImageIcon box_selected = new ImageIcon("/Game/src/sudokuBoard/box_selected.png");
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
 				if (i == 3 || i == 7) boardPanel.add(new JLabel("Å@"));
@@ -69,7 +76,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 					JRadioButton box = new JRadioButton("", box_unselected);
 					box.setSelectedIcon(box_selected);
 					box.setPreferredSize(new Dimension(20,25));
-					//tf.setHorizontalTextPosition(JRadioButton.CENTER);
+					box.setHorizontalTextPosition(JRadioButton.CENTER);
 					box.setBorderPainted(true);
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
@@ -138,11 +145,18 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			}
 			NanpureSolver n;
 
-			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
-			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
-			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
-			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
-			else n = new BasicNanpureSolver(numInBoard);
+			if (solverMode == BASICSIZE) {
+				if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
+				else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
+				else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
+				else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
+				else n = new BasicNanpureSolver(numInBoard);
+			}
+			else {
+				if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(numInBoard);
+				else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(numInBoard);
+				else n = new BasicNanpureSolver(numInBoard);
+			}
 			n.solve();
 		}	
 	}
