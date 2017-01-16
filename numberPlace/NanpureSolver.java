@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public abstract class NanpureSolver {
 	int[] board; //盤面
 	int size; //一辺のマス数
-	ArrayList<Integer> remain = new ArrayList<Integer>();//空いてるマスのリスト
+	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();//空いてるマスのリスト
 		
 	public NanpureSolver(){}
 	
@@ -19,11 +19,11 @@ public abstract class NanpureSolver {
 			catch(NumberFormatException e) {
 				System.out.println("invalid input: not integer");
 			}
-			if (this.board[i] == 0) remain.add(i);
+			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
 	}
 	public boolean boardIsFull() {//盤面が埋まっているかどうか
-		return remain.isEmpty();	
+		return emptyBoxList.isEmpty();	
 	}
 	
 	public abstract boolean isPlaceableInBlock(int n, int p);
@@ -40,13 +40,13 @@ public abstract class NanpureSolver {
 	public void solve(){
 		if(!boardIsFull()) {
 			for(int n = 1; n <= size; n++){
-				int i = remain.get(0);
+				int i = emptyBoxList.get(0);
 		        if(isPlaceable(n, i)) {
-		            board[remain.get(0)] = n;
-		            remain.remove(0);
+		            board[emptyBoxList.get(0)] = n;
+		            emptyBoxList.remove(0);
 		            solve();     
 		            board[i] = 0; 
-		            remain.add(0,i);
+		            emptyBoxList.add(0,i);
 		        }
 		    }
 			
