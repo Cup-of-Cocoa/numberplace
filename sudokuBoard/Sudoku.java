@@ -45,6 +45,7 @@ public class Sudoku extends JFrame implements ActionListener{
 			setVisible(true);
 		}
 		else if(e.getActionCommand().equals("mini")) {
+			setSize(400,350);
 			setContentPane(new SudokuMiniBoard().getContentPane());
 			setVisible(true);
 		}
