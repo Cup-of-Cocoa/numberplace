@@ -23,7 +23,7 @@ import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
 import javax.swing.ImageIcon;
 
-public class NampureBoard extends JFrame implements ActionListener{
+public class SudokuBoard extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +35,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 	ButtonGroup boardButtonGroup, modeButtonGroup;
 
 
-	public NampureBoard() {
+	public SudokuBoard() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(500, 400);
@@ -146,7 +146,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 
 
 	public static void main(String[] args) {
-		NampureBoard nb = new NampureBoard();
+		SudokuBoard nb = new SudokuBoard();
 		nb.setVisible(true);
 	}
 
