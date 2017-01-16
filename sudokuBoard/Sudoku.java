@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -12,7 +11,6 @@ import javax.swing.JMenuItem;
 public class Sudoku extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
-//	JButton basic, mini;
 	JMenuBar jmb;
 	JMenu boardMode;
 	JMenuItem basic, mini;
@@ -37,16 +35,18 @@ public class Sudoku extends JFrame implements ActionListener{
 		boardMode.add(mini);
 		jmb.add(boardMode);
 		setJMenuBar(jmb);
+		
+		setContentPane(new SudokuBasicBoard().getContentPane());
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("basic")) {
-			JFrame basicSudoku = new SudokuBoard();
-			setContentPane(basicSudoku.getContentPane());
+			setContentPane(new SudokuBasicBoard().getContentPane());
 			setVisible(true);
 		}
 		else if(e.getActionCommand().equals("mini")) {
-			
+			setContentPane(new SudokuMiniBoard().getContentPane());
+			setVisible(true);
 		}
 	}
 	
