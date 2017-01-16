@@ -1,28 +1,17 @@
 package sudokuBoard;
 
-
-import java.awt.FlowLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-
-
-import numberPlace.BasicNanpureSolver;
-import numberPlace.EvenOddNanpureSolver;
-import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
-import numberPlace.ZigzagNanpureSolver;
 import numberPlace.MiniBasicNanpureSolver;
 import numberPlace.MiniDiagnoalNanpureSolver;
 
@@ -55,9 +44,6 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 	
 	public void setBoard(){
 		boardPanel = new JPanel(new GridLayout(11,11));
-		boardButtonGroup = new ButtonGroup();
-		ImageIcon box_unselected = new ImageIcon("/Game/src/sudokuBoard/box_unselected.png");
-		ImageIcon box_selected = new ImageIcon("/Game/src/sudokuBoard/box_selected.png");
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
 				if (i == 3 || i == 7) boardPanel.add(new JLabel("@"));
@@ -111,11 +97,9 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 			NanpureSolver n;
-			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
-			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
-			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
-			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
-			else n = new BasicNanpureSolver(numInBoard);
+			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(numInBoard);
+			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(numInBoard);
+			else n = new MiniBasicNanpureSolver(numInBoard);
 			n.solve();
 		}	
 	}

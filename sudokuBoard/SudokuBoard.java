@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,7 +23,10 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	JButton ok;
 	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
-	ButtonGroup boardButtonGroup, modeButtonGroup;
+	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
+	
+	ImageIcon box_unselected = new ImageIcon("/Game/src/sudokuBoard/box_unselected.png");
+	ImageIcon box_selected = new ImageIcon("/Game/src/sudokuBoard/box_selected.png");
 
 	public SudokuBoard() {
 		setTitle("Number Place");
