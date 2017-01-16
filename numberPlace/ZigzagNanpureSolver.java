@@ -21,7 +21,7 @@ public class ZigzagNanpureSolver extends NanpureSolver{
 			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
 	}
-	
+
 	public boolean isPlaceableInBlock(int n, int p) {
 		int blocknum = 0;
 		for(int i = 0; i < size; i++) {
@@ -34,7 +34,7 @@ public class ZigzagNanpureSolver extends NanpureSolver{
 		}
 		return true;
 	}
-	
+
 	public static void main(String[] args) {
 		ZigzagNanpureSolver n = new ZigzagNanpureSolver(args);
 		n.solve();

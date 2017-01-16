@@ -27,7 +27,7 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 			}				
 		}
 	}
-	
+
 	public boolean isPlaceableInSpPoint(int n, int p) {
 		if(!even_oddList.contains(p)) return true;
 		else{
@@ -35,10 +35,10 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 				return (n%2 == 0);
 			}
 			else return (n%2 == 1);
-				
+
 		}
 	}
-	
+
 	public boolean isPlaceableInBlock(int n, int p) {
 		int spnum;
 		spnum = (((p/9)/3)*3)*9+((p%9)/3)*3;
@@ -49,7 +49,7 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 		}
 		return isPlaceableInSpPoint(n, p);
 	}
-	
+
 	public static void main(String[] args) {
 		EvenOddNanpureSolver n = new EvenOddNanpureSolver(args);
 		n.solve();

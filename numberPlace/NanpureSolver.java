@@ -6,9 +6,9 @@ public abstract class NanpureSolver {
 	int[] board; //盤面
 	int size; //一辺のマス数
 	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();//空いてるマスのリスト
-		
+
 	public NanpureSolver(){}
-	
+
 	public NanpureSolver(String[] board){
 		size = (int)Math.sqrt(board.length);
 		this.board = new int[size*size];
@@ -25,9 +25,9 @@ public abstract class NanpureSolver {
 	public boolean boardIsFull() {//盤面が埋まっているかどうか
 		return emptyBoxList.isEmpty();	
 	}
-	
+
 	public abstract boolean isPlaceableInBlock(int n, int p);
-	
+
 	public boolean isPlaceable(int n, int p) {
 		if(board[p] != 0) return false;
 		for (int i = 0; i < size; i++) {
@@ -36,40 +36,28 @@ public abstract class NanpureSolver {
 		}
 		return isPlaceableInBlock(n,p);		
 	}
-	
+
 	public void solve(){
 		if(!boardIsFull()) {
 			for(int n = 1; n <= size; n++){
 				int i = emptyBoxList.get(0);
-		        if(isPlaceable(n, i)) {
-		            board[emptyBoxList.get(0)] = n;
-		            emptyBoxList.remove(0);
-		            solve();     
-		            board[i] = 0; 
-		            emptyBoxList.add(0,i);
-		        }
-		    }
-			
+				if(isPlaceable(n, i)) {
+					board[emptyBoxList.get(0)] = n;
+					emptyBoxList.remove(0);
+					solve();     
+					board[i] = 0; 
+					emptyBoxList.add(0,i);
+				}
+			}
+
 		}
 		else {
 			outputBoard();
 		}
-		
+
 	}
-	
+
 	public void outputBoard() {
-		for(int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				System.out.print(board[i*size+j] + " ");
-				if(j%3 == 2) System.out.print(" ");
-			}
-			System.out.println();
-			if(i%3 == 2) System.out.println();
-		}
-		System.out.println();
-	}
-	
-	public void outputMiniBoard() {
 		for(int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
 				System.out.print(board[i*size+j] + " ");

@@ -1,11 +1,11 @@
 package numberPlace;
 
 public class DiagnoalNanpureSolver extends NanpureSolver{
-	
+
 	public DiagnoalNanpureSolver(String[] board){
 		super(board);
 	}
-	
+
 	public boolean isPlaceableInBlock(int n, int p) {
 		int spnum;
 		spnum = (((p/9)/3)*3)*9+((p%9)/3)*3;
@@ -16,7 +16,7 @@ public class DiagnoalNanpureSolver extends NanpureSolver{
 		else if (p%8 == 0) return isPlaceableInDiag2(n, p);
 		else return true;
 	}
-	
+
 	public boolean isPlaceableInDiag1(int n, int p) {
 		for (int i = 0; i < size; i++) {
 			if(board[i*size+i] == n) return false;
@@ -24,14 +24,14 @@ public class DiagnoalNanpureSolver extends NanpureSolver{
 		if(p == 40) return isPlaceableInDiag2(n,p);
 		else return true;
 	} 
-	
+
 	public boolean isPlaceableInDiag2(int n, int p) {
 		for (int i = 0; i < size; i++) {
 			if(board[(size-i)*size - (size-i)] == n) return false;
 		}
 		return true;
 	}
-	
+
 	public void outputBoard() {
 		for(int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -43,7 +43,7 @@ public class DiagnoalNanpureSolver extends NanpureSolver{
 		}
 		System.out.println();
 	}
-	
+
 	public static void main(String[] args) {
 		DiagnoalNanpureSolver n = new DiagnoalNanpureSolver(args);
 		n.solve();

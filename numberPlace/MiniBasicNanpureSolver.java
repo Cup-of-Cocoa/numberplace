@@ -1,11 +1,11 @@
 package numberPlace;
 
 public class MiniBasicNanpureSolver extends NanpureSolver{
-	
+
 	public MiniBasicNanpureSolver(String[] board){
 		super(board);
 	}
-	
+
 	public boolean isPlaceableInBlock(int n, int p) {
 		int spnum;
 		spnum = (((p/6)/2)*2)*6+((p%6)/3)*3;
@@ -15,7 +15,7 @@ public class MiniBasicNanpureSolver extends NanpureSolver{
 		}
 		return true;
 	}
-	
+
 	public void outputBoard() {
 		for(int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
@@ -27,8 +27,8 @@ public class MiniBasicNanpureSolver extends NanpureSolver{
 		}
 		System.out.println();
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		MiniBasicNanpureSolver n = new MiniBasicNanpureSolver(args);
 		n.solve();

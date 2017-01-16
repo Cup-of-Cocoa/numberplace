@@ -1,25 +1,25 @@
 package numberPlace;
 
 public class MiniDiagnoalNanpureSolver extends NanpureSolver{
-	
+
 	public MiniDiagnoalNanpureSolver(String[] board){
 		super(board);
 	}
-	
+
 	public boolean isPlaceableInDiag1(int n, int p) {
 		for (int i = 0; i < size; i++) {
 			if(board[i*size+i] == n) return false;
 		}
 		return true;
 	}
-	
+
 	public boolean isPlaceableInDiag2(int n, int p) {
 		for (int i = 0; i < size; i++) {
 			if(board[(size-i)*size - (size-i)] == n) return false;
 		}
 		return true;
 	}
-	
+
 	public boolean isPlaceableInBlock(int n, int p) {
 		int spnum;
 		spnum = (((p/6)/2)*2)*6+((p%6)/3)*3;
@@ -31,7 +31,7 @@ public class MiniDiagnoalNanpureSolver extends NanpureSolver{
 		else if (p%5 ==0) return isPlaceableInDiag2(n,p);
 		else return true;
 	}
-	
+
 	public void outputBoard() {
 		for(int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
