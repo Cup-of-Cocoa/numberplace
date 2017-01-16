@@ -2,6 +2,7 @@ package sudokuBoard;
 
 
 import java.awt.FlowLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -58,8 +59,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		//”š‚ª“ü‚é”Õ–Ê
 		boardPanel = new JPanel(new GridLayout(11,11));
 		boardButtonGroup = new ButtonGroup();
-		ImageIcon box_unselected = new ImageIcon("./box_unselected.png");
-		ImageIcon box_selected = new ImageIcon("./box_selected.png");
+		ImageIcon box_unselected = new ImageIcon("./box_unselected.gif");
+		ImageIcon box_selected = new ImageIcon("./box_selected.gif");
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
 				if (i == 3 || i == 7) boardPanel.add(new JLabel("@"));
@@ -67,6 +68,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 				else {
 					JRadioButton box = new JRadioButton("", box_unselected);
 					box.setSelectedIcon(box_selected);
+					box.setPreferredSize(new Dimension(20,25));
 					//tf.setHorizontalTextPosition(JRadioButton.CENTER);
 					box.setBorderPainted(true);
 					boardPanel.add(box);
