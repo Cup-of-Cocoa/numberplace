@@ -22,12 +22,18 @@ public abstract class NanpureSolver {
 			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
 	}
-	public boolean boardIsFull() {//盤面が埋まっているかどうか
+	
+	//盤面が埋まっているかどうか
+	public boolean boardIsFull() {
 		return emptyBoxList.isEmpty();	
 	}
-
+	
+	//場所pが属する小さなブロック（９×９の盤面なら３×３の部分）の中で、数字nが存在しない、
+	//つまり数字nがおけるならtrueを返す。
+	//場所は左上から始めて右にいき、端まで来たら次の行に移るという順番で番号をつけて表す。
 	public abstract boolean isPlaceableInBlock(int n, int p);
 
+	//場所pと同じ行か列に数字nが存在しないならtrueを返す。
 	public boolean isPlaceable(int n, int p) {
 		if(board[p] != 0) return false;
 		for (int i = 0; i < size; i++) {
