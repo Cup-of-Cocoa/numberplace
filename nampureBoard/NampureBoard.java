@@ -20,6 +20,7 @@ import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
+import numberPlace.ZigzagNanpureSolver;
 import javax.swing.ImageIcon;
 
 public class NampureBoard extends JFrame implements ActionListener{
@@ -27,7 +28,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	JPanel numbersPanel, boardPanel, modePanel;
-	JRadioButton diagModeButton, evenOddModeButton, basicModeButton;
+	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
 	JButton ok;
 	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
@@ -82,13 +83,16 @@ public class NampureBoard extends JFrame implements ActionListener{
 		basicModeButton = new JRadioButton("Basic", true);
 		diagModeButton = new JRadioButton("Diagnoal");
 		evenOddModeButton = new JRadioButton("Even-Odd");
+		zigzagModeButton = new JRadioButton("Zigzag");
 		modeButtonGroup = new ButtonGroup();
 		modeButtonGroup.add(basicModeButton);
 		modeButtonGroup.add(diagModeButton);
 		modeButtonGroup.add(evenOddModeButton);
+		modeButtonGroup.add(zigzagModeButton);
 		modePanel.add(basicModeButton);
 		modePanel.add(diagModeButton);
-		modePanel.add(evenOddModeButton);;
+		modePanel.add(evenOddModeButton);
+		modePanel.add(zigzagModeButton);
 		add(modePanel);
 		
 		ok = new JButton("OK");
@@ -131,8 +135,9 @@ public class NampureBoard extends JFrame implements ActionListener{
 			NanpureSolver n;
 
 			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
-			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
 			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
+			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
+			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
 			else n = new BasicNanpureSolver(numInBoard);
 			n.solve();
 		}
