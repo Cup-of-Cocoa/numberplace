@@ -22,7 +22,7 @@ import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
 
 
-public class NampureBoard2 extends JFrame implements ActionListener{
+public class SudokuBoard2 extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	JPanel board, buttons;
@@ -30,7 +30,7 @@ public class NampureBoard2 extends JFrame implements ActionListener{
 	List<JTextField> numBoard = new ArrayList<JTextField>();
 	ButtonGroup mode;
 
-	public NampureBoard2() {
+	public SudokuBoard2() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(400, 300);
@@ -99,7 +99,7 @@ public class NampureBoard2 extends JFrame implements ActionListener{
 	}
 
 	public static void main(String[] args) {
-		NampureBoard2 nb = new NampureBoard2();
+		SudokuBoard2 nb = new SudokuBoard2();
 		nb.setVisible(true);
 	}
 
