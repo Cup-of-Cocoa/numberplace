@@ -2,29 +2,16 @@ package sudokuBoard;
 
 
 import java.awt.FlowLayout;
-import java.awt.Dimension;
 import java.util.ArrayList;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-
-import numberPlace.BasicNanpureSolver;
-import numberPlace.EvenOddNanpureSolver;
-import numberPlace.DiagnoalNanpureSolver;
-import numberPlace.NanpureSolver;
-import numberPlace.ZigzagNanpureSolver;
-import numberPlace.MiniBasicNanpureSolver;
-import numberPlace.MiniDiagnoalNanpureSolver;
-import javax.swing.ImageIcon;
 
 public abstract class SudokuBoard extends JFrame implements ActionListener{
 
@@ -75,6 +62,4 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	public abstract void setNumbers();
 	public abstract void setBoard();
 	
-
-
 }

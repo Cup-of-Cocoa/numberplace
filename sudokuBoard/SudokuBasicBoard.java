@@ -1,44 +1,27 @@
 package sudokuBoard;
 
-
-import java.awt.FlowLayout;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-
-
 
 import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
-import numberPlace.MiniBasicNanpureSolver;
-import numberPlace.MiniDiagnoalNanpureSolver;
 
 import javax.swing.ImageIcon;
 
 public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-
-	JPanel numbersPanel, boardPanel, modePanel;
-	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
-	JButton ok;
-	List<JButton> numberButtons = new ArrayList<JButton>();
-	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
-	ButtonGroup boardButtonGroup, modeButtonGroup;
 
 	public SudokuBasicBoard() {
 		super();
@@ -119,13 +102,11 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 			NanpureSolver n;
-
 			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
 			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
 			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
 			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
 			else n = new BasicNanpureSolver(numInBoard);
-
 			n.solve();
 		}	
 	}

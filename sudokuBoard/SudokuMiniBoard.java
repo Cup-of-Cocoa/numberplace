@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 
+
 import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
@@ -24,27 +25,19 @@ import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
 import numberPlace.MiniBasicNanpureSolver;
 import numberPlace.MiniDiagnoalNanpureSolver;
+
 import javax.swing.ImageIcon;
 
-public class SudokuMiniBoard extends JFrame implements ActionListener{
+public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
-	JPanel numbersPanel, boardPanel, modePanel;
-	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
-	JButton ok;
-	List<JButton> numberButtons = new ArrayList<JButton>();
-	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
-	ButtonGroup boardButtonGroup, modeButtonGroup;
-
 	public SudokuMiniBoard() {
-//		setTitle("Number Place");
-	setLayout(new FlowLayout());
-		setSize(500, 500);
-		//setLocationRelativeTo(null);
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
-		//数字入力用のボタン
-		numbersPanel = new JPanel(new GridLayout(1,10));
+		super();
+	}
+
+	public void setNumbers() { 
+		numbersPanel = new JPanel(new GridLayout(1,7));
 		JButton space = new JButton("");
 		space.setActionCommand("SPACE");
 		space.addActionListener(this);
@@ -58,7 +51,9 @@ public class SudokuMiniBoard extends JFrame implements ActionListener{
 			numberButtons.add(number);
 		}
 		add(numbersPanel);
-		//数字が入る盤面
+	}
+	
+	public void setBoard(){
 		boardPanel = new JPanel(new GridLayout(11,11));
 		boardButtonGroup = new ButtonGroup();
 		ImageIcon box_unselected = new ImageIcon("/Game/src/sudokuBoard/box_unselected.png");
@@ -81,31 +76,8 @@ public class SudokuMiniBoard extends JFrame implements ActionListener{
 		}
 		numBoard.get(0).setSelected(true);
 		add(boardPanel);
-		//解く問題の種類
-		modePanel = new JPanel(new GridLayout(4,1));
-		basicModeButton = new JRadioButton("Basic", true);
-		diagModeButton = new JRadioButton("Diagnoal");
-		evenOddModeButton = new JRadioButton("Even-Odd");
-		evenOddModeButton.setEnabled(false);
-		zigzagModeButton = new JRadioButton("Zigzag");
-		zigzagModeButton.setEnabled(false);
-		modeButtonGroup = new ButtonGroup();
-		modeButtonGroup.add(basicModeButton);
-		modeButtonGroup.add(diagModeButton);
-		modeButtonGroup.add(evenOddModeButton);
-		modeButtonGroup.add(zigzagModeButton);
-		modePanel.add(basicModeButton);
-		modePanel.add(diagModeButton);
-		modePanel.add(evenOddModeButton);
-		modePanel.add(zigzagModeButton);
-		add(modePanel);
-		//OKボタン
-		ok = new JButton("OK");
-		ok.addActionListener(this);
-		ok.setActionCommand("OK");
-		add(ok);
-	}	
-
+	}
+	
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//数字が押されたとき
 			for(int i= 0; i < 81; i++) {
@@ -139,15 +111,13 @@ public class SudokuMiniBoard extends JFrame implements ActionListener{
 				}
 			}
 			NanpureSolver n;
-
 			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
 			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
 			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
 			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
 			else n = new BasicNanpureSolver(numInBoard);
-
 			n.solve();
 		}	
 	}
-
+	
 }
