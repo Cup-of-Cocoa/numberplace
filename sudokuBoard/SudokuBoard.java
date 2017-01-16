@@ -106,6 +106,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			for(int i= 0; i < 81; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText(e.getActionCommand().substring(1));
+					break;
 				}
 			}
 		}
@@ -113,6 +114,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			for(int i= 0; i < 81; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText("");
+					break;
 				}
 			}
 		}
