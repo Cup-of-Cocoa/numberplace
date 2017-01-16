@@ -82,7 +82,9 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		basicModeButton = new JRadioButton("Basic", true);
 		diagModeButton = new JRadioButton("Diagnoal");
 		evenOddModeButton = new JRadioButton("Even-Odd");
+		evenOddModeButton.setEnabled(false);
 		zigzagModeButton = new JRadioButton("Zigzag");
+		zigzagModeButton.setEnabled(false);
 		modeButtonGroup = new ButtonGroup();
 		modeButtonGroup.add(basicModeButton);
 		modeButtonGroup.add(diagModeButton);
@@ -93,13 +95,12 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
-
+		//OKÉ{É^Éì
 		ok = new JButton("OK");
 		ok.addActionListener(this);
 		ok.setActionCommand("OK");
 		add(ok);
 	}
-
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//êîéöÇ™âüÇ≥ÇÍÇΩÇ∆Ç´
