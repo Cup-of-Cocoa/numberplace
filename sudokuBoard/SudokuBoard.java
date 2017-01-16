@@ -1,4 +1,4 @@
-package nampureBoard;
+package sudokuBoard;
 
 
 import java.awt.FlowLayout;
@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 import numberPlace.BasicNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;

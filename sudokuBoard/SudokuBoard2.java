@@ -1,4 +1,4 @@
-package nampureBoard;
+package sudokuBoard;
 
 
 import java.awt.FlowLayout;
