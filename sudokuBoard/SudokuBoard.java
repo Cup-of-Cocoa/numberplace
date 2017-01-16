@@ -121,12 +121,14 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(int i= 0; i < 81; i++) {
+			remove(ok);
+			getContentPane();
+			/*for(int i= 0; i < 81; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText("");
 					break;
 				}
-			}
+			}*/
 		}
 		else if (e.getActionCommand().equals("OK")) {
 			int tmpBox = 0;
