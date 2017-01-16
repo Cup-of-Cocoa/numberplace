@@ -28,15 +28,17 @@ public class NampureBoard extends JFrame implements ActionListener{
 	JPanel board, buttons;
 	JRadioButton diag, evenOdd, basic;
 	List<JTextField> numBoard = new ArrayList<JTextField>();
-	
+	ButtonGroup mode;
+
 	public NampureBoard() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
-		board = new JPanel();
-		board.setLayout(new GridLayout(11,11));
 		setSize(400, 300);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
+		//数字が入る盤面
+		board = new JPanel();
+		board.setLayout(new GridLayout(11,11));
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
 				if (i == 3 || i == 7) board.add(new JLabel(" "));
@@ -54,7 +56,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 		diag = new JRadioButton("Diagnoal");
 		evenOdd = new JRadioButton("Even-Odd");
 		basic = new JRadioButton("Basic");
-		ButtonGroup mode = new ButtonGroup();
+		mode = new ButtonGroup();
 		mode.add(basic);
 		mode.add(diag);
 		mode.add(evenOdd);
@@ -87,7 +89,7 @@ public class NampureBoard extends JFrame implements ActionListener{
 				}
 			}
 			NanpureSolver n;
-			
+
 			if (basic.isSelected()) n = new BasicNanpureSolver(numInBoard);
 			else if (evenOdd.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
 			else if (diag.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
