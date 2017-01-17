@@ -16,14 +16,14 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
-	static final int MINI_SIZE = 6;
+
 
 	public SudokuMiniBoard() {
-		super(MINI_SIZE);
+		super(Sudoku.MINI_SIZE);
 	}
 
 	public void setBoard(){
-		boardPanel = new JPanel(new GridLayout(8,8));
+		boardPanel = new JPanel(new GridLayout(8,7));
 		for(int i = 0; i < 8; i++) {
 			for (int j = 0; j < 7; j++) {
 				if (i == 2 || i == 5) boardPanel.add(new JLabel("@"));
@@ -47,7 +47,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”Žš‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(int i= 0; i < 36; i++) {
+			for(int i= 0; i < Sudoku.MINI_SIZE*Sudoku.MINI_SIZE; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText(e.getActionCommand().substring(1));
 					break;
@@ -55,7 +55,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(int i= 0; i < 36; i++) {
+			for(int i= 0; i < Sudoku.MINI_SIZE*Sudoku.MINI_SIZE; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText("");
 					break;
@@ -64,7 +64,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		}
 		else if (e.getActionCommand().equals("OK")) {
 			int tmpBox = 0;
-			String[] numInBoard = new String[MINI_SIZE*MINI_SIZE];
+			String[] numInBoard = new String[Sudoku.MINI_SIZE*Sudoku.MINI_SIZE];
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 7; j++) {
 					if (i == 2 || i == 5) continue;

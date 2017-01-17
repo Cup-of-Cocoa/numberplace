@@ -11,11 +11,13 @@ import javax.swing.JMenuItem;
 public class Sudoku extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
-	JMenuBar jmb;
+	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
 	JMenuItem basic, mini;
 	static final int SUDOKU_HEIGHT = 500, SUDOKU_WIDTH = 400;
-
+	static final int MINI_SIZE = 6;
+	static final int BASIC_SIZE = 9;
+	
 	public Sudoku() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
@@ -23,7 +25,7 @@ public class Sudoku extends JFrame implements ActionListener{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 
-		jmb = new JMenuBar();
+		sudokuMenuBar = new JMenuBar();
 		boardMode = new JMenu("Board");
 		basic = new JMenuItem("Basic");
 		mini = new JMenuItem("Mini");
@@ -33,8 +35,8 @@ public class Sudoku extends JFrame implements ActionListener{
 		mini.addActionListener(this);
 		boardMode.add(basic);
 		boardMode.add(mini);
-		jmb.add(boardMode);
-		setJMenuBar(jmb);
+		sudokuMenuBar.add(boardMode);
+		setJMenuBar(sudokuMenuBar);
 
 		setContentPane(new SudokuBasicBoard().getContentPane());
 	}

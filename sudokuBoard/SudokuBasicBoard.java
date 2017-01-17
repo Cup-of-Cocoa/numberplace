@@ -16,12 +16,10 @@ import numberPlace.ZigzagNanpureSolver;
 
 public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
-	static final int BASIC_SIZE = 9;
-
 	private static final long serialVersionUID = 1L;
 
 	public SudokuBasicBoard() {
-		super(BASIC_SIZE);
+		super(Sudoku.BASIC_SIZE);
 	}
 
 	public void setBoard(){
@@ -49,7 +47,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(int i= 0; i < BASIC_SIZE*BASIC_SIZE; i++) {
+			for(int i= 0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText(e.getActionCommand().substring(1));
 					break;
