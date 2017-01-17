@@ -27,14 +27,27 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("./box_unselected.png"));
 	ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
 
-	public SudokuBoard() {
+	public SudokuBoard(int board_size) {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(500, 500);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタン
-		setNumbers();
+		numbersPanel = new JPanel(new GridLayout(1,7));
+		JButton space = new JButton("");
+		space.setActionCommand("SPACE");
+		space.addActionListener(this);
+		numbersPanel.add(space);
+		numberButtons.add(space);
+		for(int i = 1; i < board_size+1; i++) {
+			JButton number = new JButton(Integer.toString(i));
+			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
+			number.addActionListener(this);
+			numbersPanel.add(number);
+			numberButtons.add(number);
+		}
+		add(numbersPanel);
 		//数字が入る盤面
 		setBoard();
 		//解く問題の種類
@@ -61,8 +74,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		ok.setActionCommand("OK");
 		add(ok);
 	}	
-	
-	public abstract void setNumbers();
+
 	public abstract void setBoard();
-	
+
 }

@@ -4,8 +4,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -17,28 +15,13 @@ import numberPlace.MiniDiagnoalNanpureSolver;
 public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
+	
+	static final int MINI_SIZE = 6;
 
 	public SudokuMiniBoard() {
-		super();
+		super(MINI_SIZE);
 	}
 
-	public void setNumbers() { 
-		numbersPanel = new JPanel(new GridLayout(1,7));
-		JButton space = new JButton("");
-		space.setActionCommand("SPACE");
-		space.addActionListener(this);
-		numbersPanel.add(space);
-		numberButtons.add(space);
-		for(int i = 1; i < 7; i++) {
-			JButton number = new JButton(Integer.toString(i));
-			number.setActionCommand("N" + Integer.toString(i));//”Žš‚ð•\‚·‚½‚ß‚É"N"‚ð‚Â‚¯‚Ä‚¨‚­
-			number.addActionListener(this);
-			numbersPanel.add(number);
-			numberButtons.add(number);
-		}
-		add(numbersPanel);
-	}
-	
 	public void setBoard(){
 		boardPanel = new JPanel(new GridLayout(8,8));
 		for(int i = 0; i < 8; i++) {
@@ -48,9 +31,10 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				else {
 					JRadioButton box = new JRadioButton("", box_unselected);
 					box.setSelectedIcon(box_selected);
-					box.setPreferredSize(new Dimension(20,25));
+					int height = box_unselected.getIconHeight();
+					int width = box_unselected.getIconWidth();
+					box.setPreferredSize(new Dimension(width, height));
 					box.setHorizontalTextPosition(JRadioButton.CENTER);
-					box.setBorderPainted(true);
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
 					numBoard.add(box);
@@ -80,7 +64,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		}
 		else if (e.getActionCommand().equals("OK")) {
 			int tmpBox = 0;
-			String[] numInBoard = new String[36];
+			String[] numInBoard = new String[MINI_SIZE*MINI_SIZE];
 			for (int i = 0; i < 8; i++) {
 				for (int j = 0; j < 7; j++) {
 					if (i == 2 || i == 5) continue;
