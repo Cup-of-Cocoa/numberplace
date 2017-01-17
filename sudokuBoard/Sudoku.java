@@ -15,14 +15,14 @@ public class Sudoku extends JFrame implements ActionListener{
 	JMenu boardMode;
 	JMenuItem basic, mini;
 	static final int SUDOKU_HEIGHT = 500, SUDOKU_WIDTH = 400;
-	
+
 	public Sudoku() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(SUDOKU_HEIGHT, SUDOKU_WIDTH);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
-		
+
 		jmb = new JMenuBar();
 		boardMode = new JMenu("Board");
 		basic = new JMenuItem("Basic");
@@ -35,10 +35,10 @@ public class Sudoku extends JFrame implements ActionListener{
 		boardMode.add(mini);
 		jmb.add(boardMode);
 		setJMenuBar(jmb);
-		
+
 		setContentPane(new SudokuBasicBoard().getContentPane());
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("basic")) {
 			setSize(SUDOKU_HEIGHT, SUDOKU_WIDTH);
@@ -51,7 +51,7 @@ public class Sudoku extends JFrame implements ActionListener{
 			setVisible(true);
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Sudoku s = new Sudoku();
 		s.setVisible(true);

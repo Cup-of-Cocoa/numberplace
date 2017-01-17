@@ -15,7 +15,7 @@ import numberPlace.MiniDiagnoalNanpureSolver;
 public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	static final int MINI_SIZE = 6;
 
 	public SudokuMiniBoard() {
@@ -44,7 +44,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		numBoard.get(0).setSelected(true);
 		add(boardPanel);
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
 			for(int i= 0; i < 36; i++) {
@@ -84,5 +84,5 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 			n.solve();
 		}	
 	}
-	
+
 }
