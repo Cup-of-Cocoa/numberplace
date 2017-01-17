@@ -24,9 +24,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
-	
-	ImageIcon box_unselected = new ImageIcon("/Game/src/sudokuBoard/box_unselected.png");
-	ImageIcon box_selected = new ImageIcon("/Game/src/sudokuBoard/box_selected.png");
+	ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("./box_unselected.png"));
+	ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
 
 	public SudokuBoard() {
 		setTitle("Number Place");

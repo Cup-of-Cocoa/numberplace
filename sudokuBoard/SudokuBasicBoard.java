@@ -44,6 +44,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 	}
 	
 	public void setBoard(){
+		System.out.println(box_unselected.getIconHeight());
 		boardPanel = new JPanel(new GridLayout(11,11));
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
@@ -52,9 +53,9 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				else {
 					JRadioButton box = new JRadioButton("", box_unselected);
 					box.setSelectedIcon(box_selected);
-					box.setPreferredSize(new Dimension(20,25));
+					//box.setPreferredSize(new Dimension(20,25));
 					box.setHorizontalTextPosition(JRadioButton.CENTER);
-					box.setBorderPainted(true);
+					//box.setBorderPainted(true);
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
 					numBoard.add(box);
