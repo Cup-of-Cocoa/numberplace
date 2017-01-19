@@ -32,12 +32,12 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	String[] board;
 	int boardSize;
 	static final int PLACE_INDEX_STRING = 1;
-	static final String NOTHING = "0";
+	static final String EMPTY = "0";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
 		for(int i=0; i < boardSize*boardSize; i++) {
-			board[i] = "0";
+			board[i] = EMPTY;
 		}
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
@@ -91,7 +91,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			rb.setText("");
 		}
 		for(int i=0; i < boardSize*boardSize; i++) {
-			board[i] = NOTHING;
+			board[i] = EMPTY;
 		}
 		numBoard.get(0).setSelected(true);
 	}

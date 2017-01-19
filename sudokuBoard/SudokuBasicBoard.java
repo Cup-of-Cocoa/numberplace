@@ -54,7 +54,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			for(int i=0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText("");
-					board[i] = "0";
+					board[i] = SudokuBoard.EMPTY;
 					break;
 				}
 			}
