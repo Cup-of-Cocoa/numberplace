@@ -30,6 +30,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 
 	final ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("./box_unselected.png"));
 	final ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
+	final ImageIcon dbox_unselected = new ImageIcon(SudokuBoard.class.getResource("./dbox_unselected.png"));
+	final ImageIcon dbox_selected = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected.png"));
 	final int iconHeight = box_unselected.getIconHeight();
 	final int iconWidth = box_unselected.getIconWidth();
 
