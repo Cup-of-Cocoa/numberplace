@@ -31,20 +31,20 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
-					numBoard.add(box);
+					numberBoard.add(box);
 				}
 			}
 		}
-		numBoard.get(0).setSelected(true);
+		numberBoard.get(0).setSelected(true);
 		add(boardPanel);
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
 			for(int i=0; i < boardSize*boardSize; i++) {
-				if(numBoard.get(i).isSelected()) {
+				if(numberBoard.get(i).isSelected()) {
 					String number = e.getActionCommand().substring(PLACE_INDEX_STRING);
-					numBoard.get(i).setText(number);
+					numberBoard.get(i).setText(number);
 					board[i] = number;
 					break;
 				}
@@ -52,8 +52,8 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
 			for(int i=0; i < boardSize*boardSize; i++) {
-				if(numBoard.get(i).isSelected()) {
-					numBoard.get(i).setText("");
+				if(numberBoard.get(i).isSelected()) {
+					numberBoard.get(i).setText("");
 					board[i] = SudokuBoard.EMPTY;
 					break;
 				}

@@ -23,14 +23,16 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
 	JButton ok;
 	List<JButton> numberButtons = new ArrayList<JButton>();
-	List<JRadioButton> numBoard = new ArrayList<JRadioButton>();
+	List<JRadioButton> numberBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
-	ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("./box_unselected.png"));
-	ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
-	int iconHeight = box_unselected.getIconHeight();
-	int iconWidth = box_unselected.getIconWidth();
-	String[] board;
 	int boardSize;
+	String[] board;
+
+	final ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("./box_unselected.png"));
+	final ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
+	final int iconHeight = box_unselected.getIconHeight();
+	final int iconWidth = box_unselected.getIconWidth();
+
 	static final int PLACE_INDEX_STRING = 1;
 	static final String EMPTY = "0";
 
@@ -87,13 +89,13 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	}	
 
 	void clearBoard(){
-		for(JRadioButton rb: numBoard) {
+		for(JRadioButton rb: numberBoard) {
 			rb.setText("");
 		}
 		for(int i=0; i < boardSize*boardSize; i++) {
 			board[i] = EMPTY;
 		}
-		numBoard.get(0).setSelected(true);
+		numberBoard.get(0).setSelected(true);
 	}
 
 	JRadioButton makeBox() {
