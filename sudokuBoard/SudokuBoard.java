@@ -14,7 +14,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import java.awt.Insets;
 
 public abstract class SudokuBoard extends JFrame implements ActionListener{
 
