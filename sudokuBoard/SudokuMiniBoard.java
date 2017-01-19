@@ -47,7 +47,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
 			for(int i= 0; i < Sudoku.MINI_SIZE*Sudoku.MINI_SIZE; i++) {
 				if(numBoard.get(i).isSelected()) {
-					numBoard.get(i).setText(e.getActionCommand().substring(1));
+					numBoard.get(i).setText(e.getActionCommand().substring(PLACE_INDEX_AREA));
 					break;
 				}
 			}

@@ -47,7 +47,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
 			for(JRadioButton rb: numBoard) {
 				if(rb.isSelected()) {
-					rb.setText(e.getActionCommand().substring(1));
+					rb.setText(e.getActionCommand().substring(PLACE_INDEX_AREA));
 					break;
 				}
 			}

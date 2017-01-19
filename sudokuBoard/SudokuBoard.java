@@ -28,6 +28,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
 	int iconHeight = box_unselected.getIconHeight();
 	int iconWidth = box_unselected.getIconWidth();
+	static final int PLACE_INDEX_AREA = 1;
 
 	public SudokuBoard(int board_size) {
 		setTitle("Number Place");
