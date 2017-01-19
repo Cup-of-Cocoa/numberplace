@@ -1,6 +1,5 @@
 package sudokuBoard;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -42,42 +41,31 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(JRadioButton rb: numBoard) {
-				if(rb.isSelected()) {
-					rb.setText(e.getActionCommand().substring(PLACE_INDEX_STRING));
+			for(int i=0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
+				if(numBoard.get(i).isSelected()) {
+					String number = e.getActionCommand().substring(PLACE_INDEX_STRING);
+					numBoard.get(i).setText(number);
+					board[i] = number;
 					break;
 				}
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(JRadioButton rb: numBoard) {
-				if(rb.isSelected()) {
-					rb.setText("");
+			for(int i=0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
+				if(numBoard.get(i).isSelected()) {
+					numBoard.get(i).setText("");
+					board[i] = "0";
 					break;
 				}
 			}
 		}
 		else if (e.getActionCommand().equals("OK")) {
-			int tmpBox = 0;
-			String[] numInBoard = new String[Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE];
-			for (int i = 0; i < 11; i++) {
-				for (int j = 0; j < 11; j++) {
-					if (i == 3 || i == 7) continue;
-					else if (j == 3 || j == 7) continue;
-					else {
-						String tmp = numBoard.get(tmpBox).getText();
-						if(tmp.equals(""))numInBoard[tmpBox] = "0";
-						else numInBoard[tmpBox] = numBoard.get(tmpBox).getText();
-						tmpBox++;
-					}
-				}
-			}
 			NanpureSolver n;
-			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(numInBoard);
-			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(numInBoard);
-			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(numInBoard);
-			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(numInBoard);
-			else n = new BasicNanpureSolver(numInBoard);
+			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(board);
+			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(board);
+			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(board);
+			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
+			else n = new BasicNanpureSolver(board);
 			n.solve();
 		}	
 	}

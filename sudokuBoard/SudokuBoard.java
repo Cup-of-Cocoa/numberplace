@@ -29,9 +29,16 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("./box_selected.png"));
 	int iconHeight = box_unselected.getIconHeight();
 	int iconWidth = box_unselected.getIconWidth();
+	String[] board;
+	int boardSize;
 	static final int PLACE_INDEX_STRING = 1;
+	static final String NOTHING = "0";
 
 	public SudokuBoard(int board_size) {
+		boardSize = board_size;
+		for(int i=0; i < boardSize*boardSize; i++) {
+			board[i] = "0";
+		}
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(500, 500);
@@ -82,6 +89,9 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	void clearBoard(){
 		for(JRadioButton rb: numBoard) {
 			rb.setText("");
+		}
+		for(int i=0; i < boardSize*boardSize; i++) {
+			board[i] = NOTHING;
 		}
 		numBoard.get(0).setSelected(true);
 	}
