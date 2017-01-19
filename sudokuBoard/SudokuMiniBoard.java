@@ -31,7 +31,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				else {
 					JRadioButton box = new JRadioButton("", box_unselected);
 					box.setSelectedIcon(box_selected);
-					box.setPreferredSize(new Dimension(width, height));
+					box.setPreferredSize(new Dimension(iconWidth, iconHeight));
 					box.setHorizontalTextPosition(JRadioButton.CENTER);
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
