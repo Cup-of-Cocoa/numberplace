@@ -57,30 +57,29 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("OK")) {
-			NanpureSolver n;
-			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
-			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
-			else n = new MiniBasicNanpureSolver(board);
-			n.solve();
-		}	
+		else if (e.getActionCommand().equals("BASIC")) {
+			setNormalBoard();
+			evenOddButton.setEnabled(false);
+			validate();
+		}
 		else if (e.getActionCommand().equals("DIAG")) {
+			setNormalBoard();
+			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(dbox_unselected1);
 				numberBoard.get(boardSize*i+i).setSelectedIcon(dbox_selected1);
 				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(dbox_unselected2);
 				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(dbox_selected2);
 			}
-		}
-		else if (e.getActionCommand().equals("BASIC")) {
-			for(int i=0; i < boardSize; i++) {
-				numberBoard.get(boardSize*i+i).setIcon(box_unselected);
-				numberBoard.get(boardSize*i+i).setSelectedIcon(box_selected);
-				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(box_unselected);
-				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(box_selected);
-			}
 			validate();
 		}
+		else if (e.getActionCommand().equals("OK")) {
+			NanpureSolver n;
+			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
+			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
+			else n = new MiniBasicNanpureSolver(board);
+			n.solve();
+		}			
 	}
 
 }
