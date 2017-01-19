@@ -54,7 +54,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		}
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
-		setSize(Sudoku.SUDOKU_BOARD_HEIGHT, Sudoku.SUDOKU_BOARD_WIDTH);
+		setSize(Sudoku.SUDOKU_BOARD_WIDTH, Sudoku.SUDOKU_BOARD_HEIGHT);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタン
