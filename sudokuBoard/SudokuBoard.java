@@ -103,7 +103,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		box.setHorizontalTextPosition(JRadioButton.CENTER);
 		return box;		
 	}
-	
+
 	abstract void setBoard();
 
 }
