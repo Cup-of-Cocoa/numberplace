@@ -38,6 +38,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
+		board = new String[boardSize*boardSize];
 		for(int i=0; i < boardSize*boardSize; i++) {
 			board[i] = EMPTY;
 		}
