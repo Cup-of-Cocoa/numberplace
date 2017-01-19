@@ -21,7 +21,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 
 	JPanel numbersPanel, boardPanel, modePanel;
 	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
-	JButton ok;
+	JButton spaceButton, evenOddButton, okButton;
 	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numberBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
@@ -58,11 +58,11 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタン
 		numbersPanel = new JPanel(new GridLayout(1,board_size+2));
-		JButton space = new JButton("");
-		space.setActionCommand("SPACE");
-		space.addActionListener(this);
-		numbersPanel.add(space);
-		numberButtons.add(space);
+		spaceButton = new JButton("");
+		spaceButton.setActionCommand("SPACE");
+		spaceButton.addActionListener(this);
+		numbersPanel.add(spaceButton);
+		numberButtons.add(spaceButton);
 		for(int i = 1; i < board_size+1; i++) {
 			JButton number = new JButton(Integer.toString(i));
 			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
@@ -70,12 +70,12 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			numbersPanel.add(number);
 			numberButtons.add(number);
 		}
-		JButton evenOdd = new JButton("E-O");
-		evenOdd.setActionCommand("E-O");
-		evenOdd.addActionListener(this);
-		evenOdd.setEnabled(false);
-		numbersPanel.add(evenOdd);
-		numberButtons.add(evenOdd);
+		evenOddButton = new JButton("E-O");
+		evenOddButton.setActionCommand("E-O");
+		evenOddButton.addActionListener(this);
+		evenOddButton.setEnabled(false);
+		numbersPanel.add(evenOddButton);
+		numberButtons.add(evenOddButton);
 		add(numbersPanel);
 		//数字が入る盤面
 		setBoard();
@@ -90,7 +90,6 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		evenOddModeButton = new JRadioButton("Even-Odd");
 		evenOddModeButton.setActionCommand("EVEN-ODD");
 		evenOddModeButton.addActionListener(this);
-		evenOddModeButton.setEnabled(false);
 		zigzagModeButton = new JRadioButton("Zigzag");
 		zigzagModeButton.setEnabled(false);
 		modeButtonGroup = new ButtonGroup();
@@ -104,10 +103,10 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
 		//OKボタン
-		ok = new JButton("OK");
-		ok.addActionListener(this);
-		ok.setActionCommand("OK");
-		add(ok);
+		okButton = new JButton("OK");
+		okButton.addActionListener(this);
+		okButton.setActionCommand("OK");
+		add(okButton);
 	}	
 
 	void clearBoard(){

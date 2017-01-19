@@ -62,12 +62,32 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 		else if (e.getActionCommand().equals("E-O")) {
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
-					numberBoard.get(i).setIcon(eobox_selected);
+					if(numberBoard.get(i).getIcon().equals(box_unselected)){
+						numberBoard.get(i).setIcon(eobox_unselected);
+						numberBoard.get(i).setSelectedIcon(eobox_selected);
+					}
+					else {
+						numberBoard.get(i).setIcon(box_unselected);
+						numberBoard.get(i).setSelectedIcon(box_selected);
+					}
 				}
 			}
 			validate();
 		}
+		else if (e.getActionCommand().equals("BASIC")) {
+			evenOddModeButton.setEnabled(false);
+			for(int i=0; i < boardSize; i++) {
+				numberBoard.get(boardSize*i+i).setIcon(box_unselected);
+				numberBoard.get(boardSize*i+i).setSelectedIcon(box_selected);
+				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(box_unselected);
+				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(box_selected);
+			}
+			numberBoard.get(sudokuCenter).setIcon(box_unselected);
+			numberBoard.get(sudokuCenter).setSelectedIcon(box_selected);
+			validate();
+		}
 		else if (e.getActionCommand().equals("DIAG")) {
+			evenOddModeButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(dbox_unselected1);
 				numberBoard.get(boardSize*i+i).setSelectedIcon(dbox_selected1);
@@ -78,15 +98,8 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			numberBoard.get(sudokuCenter).setSelectedIcon(dbox_selected3);
 			validate();
 		}
-		else if (e.getActionCommand().equals("BASIC")) {
-			for(int i=0; i < boardSize; i++) {
-				numberBoard.get(boardSize*i+i).setIcon(box_unselected);
-				numberBoard.get(boardSize*i+i).setSelectedIcon(box_selected);
-				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(box_unselected);
-				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(box_selected);
-			}
-			numberBoard.get(sudokuCenter).setIcon(box_unselected);
-			numberBoard.get(sudokuCenter).setSelectedIcon(box_selected);
+		else if (e.getActionCommand().equals("EVEN-ODD")) {
+			evenOddModeButton.setEnabled(true);
 			validate();
 		}
 		else if (e.getActionCommand().equals("OK")) {
