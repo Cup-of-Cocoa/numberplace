@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import java.awt.Insets;
 
 public abstract class SudokuBoard extends JFrame implements ActionListener{
 
@@ -37,8 +38,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final ImageIcon dbox_selected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected3.png"));	
 	final ImageIcon eobox_unselected = new ImageIcon(SudokuBoard.class.getResource("./eobox_unselected.png"));
 	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));	
-	final int iconHeight = box_unselected.getIconHeight();
 	final int iconWidth = box_unselected.getIconWidth();
+	final int iconHeight = box_unselected.getIconHeight();
 	final int sudokuCenter = 40;
 
 	static final int PLACE_INDEX_STRING = 1;
