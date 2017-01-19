@@ -22,7 +22,6 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	JPanel numbersPanel, boardPanel, modePanel;
 	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
 	JButton spaceButton, evenOddButton, okButton;
-	List<JButton> numberButtons = new ArrayList<JButton>();
 	List<JRadioButton> numberBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
 	int boardSize;
@@ -52,31 +51,29 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		for(int i=0; i < boardSize*boardSize; i++) {
 			board[i] = EMPTY;
 		}
+		//ウィンドウのタイトルやレイアウトを決める
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(Sudoku.SUDOKU_BOARD_WIDTH, Sudoku.SUDOKU_BOARD_HEIGHT);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
-		//数字入力用のボタン
+		//数字入力用のボタンをつくる
 		numbersPanel = new JPanel(new GridLayout(1,board_size+2));
-		spaceButton = new JButton("");
+		spaceButton = new JButton("");//入力を消す用のボタン
 		spaceButton.setActionCommand("SPACE");
 		spaceButton.addActionListener(this);
 		numbersPanel.add(spaceButton);
-		numberButtons.add(spaceButton);
 		for(int i = 1; i < board_size+1; i++) {
 			JButton number = new JButton(Integer.toString(i));
 			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
 			number.addActionListener(this);
 			numbersPanel.add(number);
-			numberButtons.add(number);
 		}
 		evenOddButton = new JButton("E-O");
 		evenOddButton.setActionCommand("E-O");
 		evenOddButton.addActionListener(this);
 		evenOddButton.setEnabled(false);
 		numbersPanel.add(evenOddButton);
-		numberButtons.add(evenOddButton);
 		add(numbersPanel);
 		//数字が入る盤面
 		setBoard();
