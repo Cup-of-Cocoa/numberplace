@@ -3,6 +3,7 @@ package sudokuBoard;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -39,40 +40,29 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(JRadioButton rb: numBoard) {
-				if(rb.isSelected()) {
-					rb.setText(e.getActionCommand().substring(PLACE_INDEX_STRING));
+			for(int i=0; i < boardSize*boardSize; i++) {
+				if(numBoard.get(i).isSelected()) {
+					String number = e.getActionCommand().substring(PLACE_INDEX_STRING);
+					numBoard.get(i).setText(number);
+					board[i] = number;
 					break;
 				}
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(JRadioButton rb: numBoard) {
-				if(rb.isSelected()) {
-					rb.setText("");
+			for(int i=0; i < boardSize*boardSize; i++) {
+				if(numBoard.get(i).isSelected()) {
+					numBoard.get(i).setText("");
+					board[i] = SudokuBoard.EMPTY;
 					break;
 				}
 			}
 		}
 		else if (e.getActionCommand().equals("OK")) {
-			int tmpBox = 0;
-			String[] numInBoard = new String[Sudoku.MINI_SIZE*Sudoku.MINI_SIZE];
-			for (int i = 0; i < 8; i++) {
-				for (int j = 0; j < 7; j++) {
-					if (i == 2 || i == 5) continue;
-					else if (j == 3) continue;
-					else {
-						String tmp = numBoard.get(tmpBox).getText();
-						if(tmp.equals(""))numInBoard[tmpBox] = "0";
-						else numInBoard[tmpBox] = numBoard.get(tmpBox).getText();
-						tmpBox++;
-					}
-				}
-			}
 			NanpureSolver n;
-			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(numInBoard);
-			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(numInBoard);
-			else n = new MiniBasicNanpureSolver(numInBoard);
+			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
+			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
+			else n = new MiniBasicNanpureSolver(board);
 			n.solve();
 		}	
 	}

@@ -41,7 +41,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(int i=0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
+			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numBoard.get(i).isSelected()) {
 					String number = e.getActionCommand().substring(PLACE_INDEX_STRING);
 					numBoard.get(i).setText(number);
@@ -51,7 +51,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(int i=0; i < Sudoku.BASIC_SIZE*Sudoku.BASIC_SIZE; i++) {
+			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numBoard.get(i).isSelected()) {
 					numBoard.get(i).setText("");
 					board[i] = SudokuBoard.EMPTY;
