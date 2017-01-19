@@ -74,6 +74,12 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		ok.setActionCommand("OK");
 		add(ok);
 	}	
+	
+	public void clearBoard(){
+		for(JRadioButton rb: numBoard) {
+			rb.setText("");
+		}
+	}
 
 	public abstract void setBoard();
 
