@@ -41,7 +41,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final int iconHeight = box_unselected.getIconHeight();
 	final int iconWidth = box_unselected.getIconWidth();
 	final int sudokuCenter = 40;
-	
+
 	static final int PLACE_INDEX_STRING = 1;
 	static final String EMPTY = "0";
 	static final String EVENODD_MAGIC_NUMBER = "1";
