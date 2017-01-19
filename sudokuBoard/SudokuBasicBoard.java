@@ -68,6 +68,16 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			else n = new BasicNanpureSolver(board);
 			n.solve();
 		}	
+		else if (e.getActionCommand().equals("DIAG")) {
+			numberBoard.get(0).setIcon(dbox_unselected);
+			numberBoard.get(0).setSelectedIcon(dbox_selected);
+			validate();
+		}
+		else if (e.getActionCommand().equals("BASIC")) {
+			numberBoard.get(0).setIcon(box_unselected);
+			numberBoard.get(0).setSelectedIcon(box_selected);
+			validate();
+		}
 	}
 
 }

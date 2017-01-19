@@ -69,7 +69,11 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		//‰ð‚­–â‘è‚ÌŽí—Þ
 		modePanel = new JPanel(new GridLayout(4,1));
 		basicModeButton = new JRadioButton("Basic", true);
+		basicModeButton.setActionCommand("BASIC");
+		basicModeButton.addActionListener(this);
 		diagModeButton = new JRadioButton("Diagnoal");
+		diagModeButton.setActionCommand("DIAG");
+		diagModeButton.addActionListener(this);
 		evenOddModeButton = new JRadioButton("Even-Odd");
 		evenOddModeButton.setEnabled(false);
 		zigzagModeButton = new JRadioButton("Zigzag");
