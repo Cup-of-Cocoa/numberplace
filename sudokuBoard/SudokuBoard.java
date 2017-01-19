@@ -63,7 +63,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		spaceButton.setActionCommand("SPACE");
 		spaceButton.addActionListener(this);
 		numbersPanel.add(spaceButton);
-		for(int i = 1; i < board_size+1; i++) {
+		for(int i = 1; i <= board_size; i++) {
 			JButton number = new JButton(Integer.toString(i));
 			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
 			number.addActionListener(this);
@@ -72,7 +72,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		evenOddButton = new JButton("E-O");
 		evenOddButton.setActionCommand("E-O");
 		evenOddButton.addActionListener(this);
-		evenOddButton.setEnabled(false);
+		evenOddButton.setEnabled(false);//even-oddモードの時だけ使える
 		numbersPanel.add(evenOddButton);
 		add(numbersPanel);
 		//数字が入る盤面
