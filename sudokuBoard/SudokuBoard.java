@@ -134,7 +134,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			rb.setSelectedIcon(box_selected);
 		}
 	}
-	
+
 	abstract void setBoard();
 
 }
