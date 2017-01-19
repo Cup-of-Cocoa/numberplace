@@ -14,16 +14,16 @@ public class Sudoku extends JFrame implements ActionListener{
 	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
 	JMenuItem basic, mini;
-	static final int SUDOKU_HEIGHT = 500, SUDOKU_WIDTH = 400;
-	static final int MINI_SUDOKU_HEIGHT = 400, MINI_SUDOKU_WIDTH = 350;
+	static final int SUDOKU_BOARD_HEIGHT = 500, SUDOKU_BOARD_WIDTH = 400;
+	static final int MINI_SUDOKU_BOARD_HEIGHT = 400, MINI_SUDOKU_BOARD_WIDTH = 350;
 	static final int MINI_SIZE = 6, BASIC_SIZE = 9;
-	SudokuBoard basicBoard = new SudokuBasicBoard();
-	SudokuBoard miniBoard = new SudokuMiniBoard();
+	private SudokuBoard basicBoard = new SudokuBasicBoard();
+	private SudokuBoard miniBoard = new SudokuMiniBoard();
 
 	public Sudoku() {
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
-		setSize(SUDOKU_HEIGHT, SUDOKU_WIDTH);
+		setSize(SUDOKU_BOARD_HEIGHT, SUDOKU_BOARD_WIDTH);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 
@@ -46,13 +46,13 @@ public class Sudoku extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("basic")) {
 			basicBoard.clearBoard();
-			setSize(SUDOKU_HEIGHT, SUDOKU_WIDTH);
+			setSize(SUDOKU_BOARD_HEIGHT, SUDOKU_BOARD_WIDTH);
 			setContentPane(basicBoard.getContentPane());
 			setVisible(true);
 		}
 		else if(e.getActionCommand().equals("mini")) {
 			miniBoard.clearBoard();
-			setSize(MINI_SUDOKU_HEIGHT, MINI_SUDOKU_HEIGHT);
+			setSize(MINI_SUDOKU_BOARD_HEIGHT, MINI_SUDOKU_BOARD_HEIGHT);
 			setContentPane(miniBoard.getContentPane());
 			setVisible(true);
 		}

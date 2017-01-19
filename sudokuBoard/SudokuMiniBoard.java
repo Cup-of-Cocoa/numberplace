@@ -16,13 +16,11 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
-
-
-	public SudokuMiniBoard() {
+	SudokuMiniBoard() {
 		super(Sudoku.MINI_SIZE);
 	}
 
-	public void setBoard(){
+	void setBoard(){
 		boardPanel = new JPanel(new GridLayout(8,7));
 		for(int i = 0; i < 8; i++) {
 			for (int j = 0; j < 7; j++) {

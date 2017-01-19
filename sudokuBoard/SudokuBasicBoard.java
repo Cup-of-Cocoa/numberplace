@@ -18,11 +18,11 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
-	public SudokuBasicBoard() {
+	SudokuBasicBoard() {
 		super(Sudoku.BASIC_SIZE);
 	}
 
-	public void setBoard(){
+	void setBoard(){
 		boardPanel = new JPanel(new GridLayout(11,11));
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
