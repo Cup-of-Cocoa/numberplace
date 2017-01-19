@@ -45,17 +45,17 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
 	public void actionPerformed(ActionEvent e) {
 		if (e.getActionCommand().startsWith("N")) {//”š‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
-			for(int i= 0; i < Sudoku.MINI_SIZE*Sudoku.MINI_SIZE; i++) {
-				if(numBoard.get(i).isSelected()) {
-					numBoard.get(i).setText(e.getActionCommand().substring(PLACE_INDEX_AREA));
+			for(JRadioButton rb: numBoard) {
+				if(rb.isSelected()) {
+					rb.setText(e.getActionCommand().substring(PLACE_INDEX_STRING));
 					break;
 				}
 			}
 		}
 		else if (e.getActionCommand().equals("SPACE")) {
-			for(int i= 0; i < Sudoku.MINI_SIZE*Sudoku.MINI_SIZE; i++) {
-				if(numBoard.get(i).isSelected()) {
-					numBoard.get(i).setText("");
+			for(JRadioButton rb: numBoard) {
+				if(rb.isSelected()) {
+					rb.setText("");
 					break;
 				}
 			}
