@@ -72,8 +72,6 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(dbox_unselected2);
 				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(dbox_selected2);
 			}
-			numberBoard.get(sudokuMiniCenter).setIcon(dbox_unselected3);
-			numberBoard.get(sudokuMiniCenter).setSelectedIcon(dbox_selected3);
 		}
 		else if (e.getActionCommand().equals("BASIC")) {
 			for(int i=0; i < boardSize; i++) {

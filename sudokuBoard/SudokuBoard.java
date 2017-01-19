@@ -36,6 +36,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final ImageIcon dbox_selected2 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected2.png"));
 	final ImageIcon dbox_unselected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_unselected3.png"));
 	final ImageIcon dbox_selected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected3.png"));	
+	final ImageIcon eobox_unselected = new ImageIcon(SudokuBoard.class.getResource("./eobox_unselected.png"));
+	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));	
 	final int iconHeight = box_unselected.getIconHeight();
 	final int iconWidth = box_unselected.getIconWidth();
 	final int sudokuCenter = 40;
@@ -51,11 +53,11 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		}
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
-		setSize(500, 500);
+		setSize(Sudoku.SUDOKU_BOARD_HEIGHT, Sudoku.SUDOKU_BOARD_WIDTH);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタン
-		numbersPanel = new JPanel(new GridLayout(1,7));
+		numbersPanel = new JPanel(new GridLayout(1,board_size+2));
 		JButton space = new JButton("");
 		space.setActionCommand("SPACE");
 		space.addActionListener(this);
@@ -68,6 +70,12 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			numbersPanel.add(number);
 			numberButtons.add(number);
 		}
+		JButton evenOdd = new JButton("E-O");
+		evenOdd.setActionCommand("E-O");
+		evenOdd.addActionListener(this);
+		evenOdd.setEnabled(false);
+		numbersPanel.add(evenOdd);
+		numberButtons.add(evenOdd);
 		add(numbersPanel);
 		//数字が入る盤面
 		setBoard();
@@ -80,6 +88,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		diagModeButton.setActionCommand("DIAG");
 		diagModeButton.addActionListener(this);
 		evenOddModeButton = new JRadioButton("Even-Odd");
+		evenOddModeButton.setActionCommand("EVEN-ODD");
+		evenOddModeButton.addActionListener(this);
 		evenOddModeButton.setEnabled(false);
 		zigzagModeButton = new JRadioButton("Zigzag");
 		zigzagModeButton.setEnabled(false);

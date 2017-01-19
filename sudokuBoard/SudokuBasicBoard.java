@@ -59,6 +59,14 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}	
+		else if (e.getActionCommand().equals("E-O")) {
+			for(int i=0; i < boardSize*boardSize; i++) {
+				if(numberBoard.get(i).isSelected()) {
+					numberBoard.get(i).setIcon(eobox_selected);
+				}
+			}
+			validate();
+		}
 		else if (e.getActionCommand().equals("DIAG")) {
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(dbox_unselected1);
