@@ -77,7 +77,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		add(numbersPanel);
 		//数字が入る盤面
 		setBoard();
-		//解く問題の種類
+		//解く問題の種類を選ぶボタンをつくる
 		modePanel = new JPanel(new GridLayout(4,1));
 		basicModeButton = new JRadioButton("Basic", true);
 		basicModeButton.setActionCommand("BASIC");
@@ -100,7 +100,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
-		//OKボタン
+		//OKボタンをつくる
 		okButton = new JButton("OK");
 		okButton.addActionListener(this);
 		okButton.setActionCommand("OK");
@@ -108,10 +108,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	}	
 
 	void clearBoard(){
-		for(JRadioButton rb: numberBoard) {
-			rb.setText("");
-		}
 		for(int i=0; i < boardSize*boardSize; i++) {
+			numberBoard.get(i).setText("");
 			board[i] = EMPTY;
 		}
 		numberBoard.get(0).setSelected(true);
