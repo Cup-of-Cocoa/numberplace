@@ -75,7 +75,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals("BASIC")) {
-			evenOddModeButton.setEnabled(false);
+			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(box_unselected);
 				numberBoard.get(boardSize*i+i).setSelectedIcon(box_selected);
@@ -87,7 +87,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals("DIAG")) {
-			evenOddModeButton.setEnabled(false);
+			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(dbox_unselected1);
 				numberBoard.get(boardSize*i+i).setSelectedIcon(dbox_selected1);
@@ -99,14 +99,25 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals("EVEN-ODD")) {
-			evenOddModeButton.setEnabled(true);
+			evenOddButton.setEnabled(true);
 			validate();
 		}
 		else if (e.getActionCommand().equals("OK")) {
 			NanpureSolver n;
 			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(board);
 			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(board);
-			else if (evenOddModeButton.isSelected()) n = new EvenOddNanpureSolver(board);
+			else if (evenOddModeButton.isSelected()) {
+				String[] newBoard = new String[boardSize*boardSize];
+				for (int i=0; i < boardSize*boardSize; i++) {
+					if(numberBoard.get(i).getIcon().equals(eobox_unselected)) {
+						newBoard[i] = SudokuBoard.EVENODD_MAGIC_NUMBER + board[i];
+					}
+					else {
+						newBoard[i] = board[i];
+					}
+				}
+				n = new EvenOddNanpureSolver(newBoard);
+			}
 			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
 			else n = new BasicNanpureSolver(board);
 			n.solve();

@@ -44,6 +44,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	
 	static final int PLACE_INDEX_STRING = 1;
 	static final String EMPTY = "0";
+	static final int EVENODD_MAGIC_NUMBER = 10;
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
