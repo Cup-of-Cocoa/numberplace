@@ -29,10 +29,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				if (i == 3 || i == 7) boardPanel.add(new JLabel("Å@"));
 				else if (j == 3 || j == 7) boardPanel.add(new JLabel("Å@"));
 				else {
-					JRadioButton box = new JRadioButton("", box_unselected);
-					box.setSelectedIcon(box_selected);
-					box.setPreferredSize(new Dimension(iconWidth+5, iconHeight));
-					box.setHorizontalTextPosition(JRadioButton.CENTER);
+					JRadioButton box = makeBox();
 					boardPanel.add(box);
 					boardButtonGroup.add(box);
 					numBoard.add(box);

@@ -1,6 +1,7 @@
 package sudokuBoard;
 
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
 import java.awt.GridLayout;
@@ -85,6 +86,14 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		numBoard.get(0).setSelected(true);
 	}
 
+	JRadioButton makeBox() {
+		JRadioButton box = new JRadioButton("", box_unselected);
+		box.setSelectedIcon(box_selected);
+		box.setPreferredSize(new Dimension(iconWidth+5, iconHeight));
+		box.setHorizontalTextPosition(JRadioButton.CENTER);
+		return box;		
+	}
+	
 	abstract void setBoard();
 
 }
