@@ -17,6 +17,8 @@ public class Sudoku extends JFrame implements ActionListener{
 	static final int SUDOKU_HEIGHT = 500, SUDOKU_WIDTH = 400;
 	static final int MINI_SUDOKU_HEIGHT = 400, MINI_SUDOKU_WIDTH = 350;
 	static final int MINI_SIZE = 6, BASIC_SIZE = 9;
+	SudokuBoard basicBoard = new SudokuBasicBoard();
+	SudokuBoard miniBoard = new SudokuMiniBoard();
 
 	public Sudoku() {
 		setTitle("Number Place");
@@ -38,18 +40,18 @@ public class Sudoku extends JFrame implements ActionListener{
 		sudokuMenuBar.add(boardMode);
 		setJMenuBar(sudokuMenuBar);
 
-		setContentPane(new SudokuBasicBoard().getContentPane());
+		setContentPane(basicBoard.getContentPane());
 	}
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getActionCommand().equals("basic")) {
 			setSize(SUDOKU_HEIGHT, SUDOKU_WIDTH);
-			setContentPane(new SudokuBasicBoard().getContentPane());
+			setContentPane(basicBoard.getContentPane());
 			setVisible(true);
 		}
 		else if(e.getActionCommand().equals("mini")) {
 			setSize(MINI_SUDOKU_HEIGHT, MINI_SUDOKU_HEIGHT);
-			setContentPane(new SudokuMiniBoard().getContentPane());
+			setContentPane(miniBoard.getContentPane());
 			setVisible(true);
 		}
 	}
