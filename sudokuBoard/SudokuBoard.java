@@ -128,7 +128,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		return box;		
 	}
 
-	void resetBoard(){
+	void setBasicBoard(){
 		for(JRadioButton rb: numberBoard) {
 			rb.setIcon(box_unselected);
 			rb.setSelectedIcon(box_selected);

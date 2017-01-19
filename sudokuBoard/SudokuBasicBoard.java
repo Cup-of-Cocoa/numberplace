@@ -75,12 +75,12 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals("BASIC")) {
-			resetBoard();
+			setBasicBoard();
 			evenOddButton.setEnabled(false);
 			validate();
 		}
 		else if (e.getActionCommand().equals("DIAG")) {
-			resetBoard();
+			setBasicBoard();
 			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
 				numberBoard.get(boardSize*i+i).setIcon(dbox_unselected1);
@@ -93,7 +93,6 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals("EVEN-ODD")) {
-			resetBoard();
 			evenOddButton.setEnabled(true);
 			validate();
 		}
