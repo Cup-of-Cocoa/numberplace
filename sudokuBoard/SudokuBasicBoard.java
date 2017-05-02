@@ -3,13 +3,14 @@ package sudokuBoard;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import numberPlace.BasicNanpureSolver;
-import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
+import numberPlace.EvenOddNanpureSolver;
 import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
 
@@ -25,8 +26,8 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 		boardPanel = new JPanel(new GridLayout(11,11));
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
-				if (i == 3 || i == 7) boardPanel.add(new JLabel("@"));
-				else if (j == 3 || j == 7) boardPanel.add(new JLabel("@"));
+				if (i == 3 || i == 7) boardPanel.add(new JLabel(""));
+				else if (j == 3 || j == 7) boardPanel.add(new JLabel(""));
 				else {
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
@@ -40,7 +41,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().startsWith("N")) {//”Žš‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+		if (e.getActionCommand().startsWith("N")) {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = e.getActionCommand().substring(PLACE_INDEX_STRING);
@@ -49,7 +50,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("SPACE")) {//‹ó”’‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+		else if (e.getActionCommand().equals("SPACE")) {//ï¿½ó”’‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = SudokuBoard.EMPTY;
@@ -57,7 +58,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 					break;
 				}
 			}
-		}	
+		}
 		else if (e.getActionCommand().equals("E-O")) {
 			for(JRadioButton rb: numberBoard) {
 				if(rb.isSelected()) {
