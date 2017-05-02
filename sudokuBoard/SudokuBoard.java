@@ -41,9 +41,9 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final int iconHeight = box_unselected.getIconHeight();
 	final int sudokuCenter = 40;
 
-	static final int PLACE_INDEX_STRING = 1;
-	static final String EMPTY = "0";
-	static final String EVENODD_MAGIC_NUMBER = "1";
+	static final int PLACE_INDEX_STRING = 1;//どの数字が押されたかを表すのはアクションコマンドの２文字目
+	static final String EMPTY = "0";//numberPlaceパッケージ内のプログラムの都合上空白マスは0で表している
+	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;

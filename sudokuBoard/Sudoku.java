@@ -30,8 +30,8 @@ public class Sudoku extends JFrame implements ActionListener{
 
 		sudokuMenuBar = new JMenuBar();
 		boardMode = new JMenu("Board");
-		basic = new JMenuItem("Basic");
-		mini = new JMenuItem("Mini");
+		basic = new JMenuItem("Basic");//通常の盤面
+		mini = new JMenuItem("Mini");//小さい盤面
 		basic.setActionCommand("basic");
 		mini.setActionCommand("mini");
 		basic.addActionListener(this);
