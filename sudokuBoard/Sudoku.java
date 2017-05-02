@@ -1,11 +1,12 @@
 package sudokuBoard;
 
-import javax.swing.JFrame;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JMenuBar;
+
+import javax.swing.JFrame;
 import javax.swing.JMenu;
+import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 public class Sudoku extends JFrame implements ActionListener{
@@ -25,7 +26,7 @@ public class Sudoku extends JFrame implements ActionListener{
 		setLayout(new FlowLayout());
 		setSize(SUDOKU_BOARD_WIDTH, SUDOKU_BOARD_HEIGHT);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ﾃ励ｒ謚ｼ縺励◆繧峨え繧｣繝ｳ繝峨え繧帝哩縺倥ｋ
 
 		sudokuMenuBar = new JMenuBar();
 		boardMode = new JMenu("Board");

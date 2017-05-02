@@ -2,10 +2,10 @@ package sudokuBoard;
 
 
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -17,8 +17,8 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import numberPlace.BasicNanpureSolver;
-import numberPlace.EvenOddNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
+import numberPlace.EvenOddNanpureSolver;
 import numberPlace.NanpureSolver;
 
 
@@ -35,8 +35,8 @@ public class SudokuBoard2 extends JFrame implements ActionListener{
 		setLayout(new FlowLayout());
 		setSize(400, 300);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
-		//数字が入る盤面
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//ﾃ励ｒ謚ｼ縺励◆繧峨え繧｣繝ｳ繝峨え繧帝哩縺倥ｋ
+		//謨ｰ蟄励′蜈･繧狗乢髱｢
 		board = new JPanel();
 		board.setLayout(new GridLayout(11,11));
 		for(int i = 0; i < 11; i++) {

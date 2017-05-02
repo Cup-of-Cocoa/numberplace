@@ -8,9 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-import numberPlace.NanpureSolver;
 import numberPlace.MiniBasicNanpureSolver;
 import numberPlace.MiniDiagnoalNanpureSolver;
+import numberPlace.NanpureSolver;
 
 public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 
@@ -24,8 +24,8 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		boardPanel = new JPanel(new GridLayout(8,7));
 		for(int i = 0; i < 8; i++) {
 			for (int j = 0; j < 7; j++) {
-				if (i == 2 || i == 5) boardPanel.add(new JLabel("@"));
-				else if (j == 3) boardPanel.add(new JLabel("@"));
+				if (i == 2 || i == 5) boardPanel.add(new JLabel(" "));
+				else if (j == 3) boardPanel.add(new JLabel(" "));
 				else {
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
@@ -39,7 +39,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().startsWith("N")) {//”Žš‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+		if (e.getActionCommand().startsWith("N")) {//æ•°å­—ãŒæŠ¼ã•ã‚ŒãŸã¨ã
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = e.getActionCommand().substring(PLACE_INDEX_STRING);
@@ -48,7 +48,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("SPACE")) {//‹ó”’‚ª‰Ÿ‚³‚ê‚½‚Æ‚«
+		else if (e.getActionCommand().equals("SPACE")) {//ç©ºç™½ãŒæŠ¼ã•ã‚ŒãŸã¨ã
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = SudokuBoard.EMPTY;
@@ -79,7 +79,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
 			else n = new MiniBasicNanpureSolver(board);
 			n.solve();
-		}			
+		}
 	}
 
 }

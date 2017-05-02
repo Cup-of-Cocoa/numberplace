@@ -3,9 +3,9 @@ package sudokuBoard;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.util.ArrayList;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -34,9 +34,9 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final ImageIcon dbox_unselected2 = new ImageIcon(SudokuBoard.class.getResource("./dbox_unselected2.png"));
 	final ImageIcon dbox_selected2 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected2.png"));
 	final ImageIcon dbox_unselected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_unselected3.png"));
-	final ImageIcon dbox_selected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected3.png"));	
+	final ImageIcon dbox_selected3 = new ImageIcon(SudokuBoard.class.getResource("./dbox_selected3.png"));
 	final ImageIcon eobox_unselected = new ImageIcon(SudokuBoard.class.getResource("./eobox_unselected.png"));
-	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));	
+	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));
 	final int iconWidth = box_unselected.getIconWidth();
 	final int iconHeight = box_unselected.getIconHeight();
 	final int sudokuCenter = 40;
@@ -51,33 +51,33 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		for(int i=0; i < boardSize*boardSize; i++) {
 			board[i] = EMPTY;
 		}
-		//ƒEƒBƒ“ƒhƒE‚Ìƒ^ƒCƒgƒ‹‚âƒŒƒCƒAƒEƒg‚ðŒˆ‚ß‚é
+		//ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®ã‚¿ã‚¤ãƒˆãƒ«ã‚„ãƒ¬ã‚¤ã‚¢ã‚¦ãƒˆã‚’æ±ºã‚ã‚‹
 		setTitle("Number Place");
 		setLayout(new FlowLayout());
 		setSize(Sudoku.SUDOKU_BOARD_WIDTH, Sudoku.SUDOKU_BOARD_HEIGHT);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//~‚ð‰Ÿ‚µ‚½‚çƒEƒBƒ“ƒhƒE‚ð•Â‚¶‚é
-		//”Žš“ü—Í—p‚Ìƒ{ƒ^ƒ“‚ð‚Â‚­‚é
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Ã—ã‚’æŠ¼ã—ãŸã‚‰ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’é–‰ã˜ã‚‹
+		//æ•°å­—å…¥åŠ›ç”¨ã®ãƒœã‚¿ãƒ³ã‚’ã¤ãã‚‹
 		numbersPanel = new JPanel(new GridLayout(1,board_size+2));
-		spaceButton = new JButton("");//“ü—Í‚ðÁ‚·—p‚Ìƒ{ƒ^ƒ“
+		spaceButton = new JButton("");//å…¥åŠ›ã‚’æ¶ˆã™ç”¨ã®ãƒœã‚¿ãƒ³
 		spaceButton.setActionCommand("SPACE");
 		spaceButton.addActionListener(this);
 		numbersPanel.add(spaceButton);
 		for(int i = 1; i <= board_size; i++) {
 			JButton number = new JButton(Integer.toString(i));
-			number.setActionCommand("N" + Integer.toString(i));//”Žš‚ð•\‚·‚½‚ß‚É"N"‚ð‚Â‚¯‚Ä‚¨‚­
+			number.setActionCommand("N" + Integer.toString(i));//æ•°å­—ã‚’è¡¨ã™ãŸã‚ã«"N"ã‚’ã¤ã‘ã¦ãŠã
 			number.addActionListener(this);
 			numbersPanel.add(number);
 		}
 		evenOddButton = new JButton("E-O");
 		evenOddButton.setActionCommand("E-O");
 		evenOddButton.addActionListener(this);
-		evenOddButton.setEnabled(false);//even-oddƒ‚[ƒh‚ÌŽž‚¾‚¯Žg‚¦‚é
+		evenOddButton.setEnabled(false);//even-oddãƒ¢ãƒ¼ãƒ‰ã®æ™‚ã ã‘ä½¿ãˆã‚‹
 		numbersPanel.add(evenOddButton);
 		add(numbersPanel);
-		//”Žš‚ª“ü‚é”Õ–Ê
+		//æ•°å­—ãŒå…¥ã‚‹ç›¤é¢
 		setBoard();
-		//‰ð‚­–â‘è‚ÌŽí—Þ‚ð‘I‚Ôƒ{ƒ^ƒ“‚ð‚Â‚­‚é
+		//è§£ãå•é¡Œã®ç¨®é¡žã‚’é¸ã¶ãƒœã‚¿ãƒ³ã‚’ã¤ãã‚‹
 		modePanel = new JPanel(new GridLayout(4,1));
 		basicModeButton = new JRadioButton("Basic", true);
 		basicModeButton.setActionCommand("BASIC");
@@ -100,12 +100,12 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
-		//OKƒ{ƒ^ƒ“‚ð‚Â‚­‚é
+		//OKãƒœã‚¿ãƒ³ã‚’ã¤ãã‚‹
 		okButton = new JButton("OK");
 		okButton.addActionListener(this);
 		okButton.setActionCommand("OK");
 		add(okButton);
-	}	
+	}
 
 	void clearBoard(){
 		for(int i=0; i < boardSize*boardSize; i++) {
@@ -120,7 +120,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		box.setSelectedIcon(box_selected);
 		box.setPreferredSize(new Dimension(iconWidth+5, iconHeight));
 		box.setHorizontalTextPosition(JRadioButton.CENTER);
-		return box;		
+		return box;
 	}
 
 	void setNormalBoard(){
