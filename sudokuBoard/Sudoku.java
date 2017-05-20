@@ -12,6 +12,10 @@ import javax.swing.JMenuItem;
 public class Sudoku extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
+	//予定
+	//数字全クリアボタンをつくる
+	//２個以上答えがあるときそれをすべて表示のチェックボックスをつくる
+
 	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
 	JMenuItem basic, mini;
