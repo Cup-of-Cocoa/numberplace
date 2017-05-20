@@ -6,6 +6,7 @@ public abstract class NanpureSolver {
 	int[] board;
 	int size;
 	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();
+	boolean isValidBoard = true;
 
 	public NanpureSolver(){}
 
@@ -41,45 +42,50 @@ public abstract class NanpureSolver {
 	}
 
 	public void solveAll(){
-		if(!boardIsFull()) {
-			for(int n = 1; n <= size; n++){
-				int i = emptyBoxList.get(0);
-				if(isPlaceable(n, i)) {
-					board[emptyBoxList.get(0)] = n;
-					emptyBoxList.remove(0);
-					solveAll();
-					board[i] = 0;
-					emptyBoxList.add(0,i);
-				}
-			}
-
-		}
-		else {
-			outputBoard();
-		}
-	}
-
-	public int solve(){
-		if(!boardIsFull()) {
-			for(int n = 1; n <= size; n++){
-				int i = emptyBoxList.get(0);
-				if(isPlaceable(n, i)) {
-					board[emptyBoxList.get(0)] = n;
-					emptyBoxList.remove(0);
-					if(solve()==1) return 1;
-					else {
+		if(isValidBoard){
+			if(!boardIsFull()) {
+				for(int n = 1; n <= size; n++){
+					int i = emptyBoxList.get(0);
+					if(isPlaceable(n, i)) {
+						board[emptyBoxList.get(0)] = n;
+						emptyBoxList.remove(0);
+						solveAll();
 						board[i] = 0;
 						emptyBoxList.add(0,i);
 					}
 				}
 
 			}
-			return 0;
+			else {
+				outputBoard();
+			}
 		}
-		else {
-			outputBoard();
-			return 1;
+	}
+
+	public int solve(){
+		if(isValidBoard) {
+			if(!boardIsFull()) {
+				for(int n = 1; n <= size; n++){
+					int i = emptyBoxList.get(0);
+					if(isPlaceable(n, i)) {
+						board[emptyBoxList.get(0)] = n;
+						emptyBoxList.remove(0);
+						if(solve()==1) return 1;
+						else {
+							board[i] = 0;
+							emptyBoxList.add(0,i);
+						}
+					}
+
+				}
+				return 0;
+			}
+			else {
+				outputBoard();
+				return 1;
+			}
 		}
+		else return 2;
 	}
 
 	public void outputBoard() {
