@@ -24,8 +24,8 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 		boardPanel = new JPanel(new GridLayout(Sudoku.MINI_SIZE+2 ,Sudoku.MINI_SIZE+1));
 		for(int i = 0; i < Sudoku.MINI_SIZE+2; i++) {
 			for (int j = 0; j < Sudoku.MINI_SIZE+1; j++) {
-				if (i == 2 || i == 5) boardPanel.add(new JLabel(" "));
-				else if (j == 3) boardPanel.add(new JLabel(" "));
+				if (i%3 == 2) boardPanel.add(new JLabel(" "));
+				else if (j%4 == 3) boardPanel.add(new JLabel(" "));
 				else {
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
