@@ -57,6 +57,21 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
+		else if (e.getActionCommand().equals(EO_AC)) {
+			for(JRadioButton rb: numberBoard) {
+				if(rb.isSelected()) {
+					if(rb.getIcon().equals(box_unselected)){
+						rb.setIcon(eobox_unselected);
+						rb.setSelectedIcon(eobox_selected);
+					}
+					else {
+						rb.setIcon(box_unselected);
+						rb.setSelectedIcon(box_selected);
+					}
+				}
+			}
+			validate();
+		}
 		else if (e.getActionCommand().equals(BASIC_AC)) {
 			setNormalBoard();
 			evenOddButton.setEnabled(false);
@@ -71,6 +86,10 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(dbox_unselected2);
 				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(dbox_selected2);
 			}
+			validate();
+		}
+		else if (e.getActionCommand().equals(EVENODD_AC)) {
+			evenOddButton.setEnabled(true);
 			validate();
 		}
 		else if (e.getActionCommand().equals(OK_AC)) {
