@@ -56,7 +56,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			board[i] = EMPTY;
 		}
 		//ウィンドウのタイトルやレイアウトを決める
-		setTitle("Number Place");
+		//setTitle(Sudoku.TITLE+"#");
 		setLayout(new FlowLayout());
 		setSize(Sudoku.SUDOKU_BOARD_WIDTH, Sudoku.SUDOKU_BOARD_HEIGHT);
 		setLocationRelativeTo(null);
