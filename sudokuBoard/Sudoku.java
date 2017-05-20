@@ -16,6 +16,7 @@ public class Sudoku extends JFrame implements ActionListener{
 	//大量の定数をEnum型で管理する
 	//盤面のセーブ機能
 	//出力の外部化
+	//初めの入力がおかしくてもそれを検出できない
 
 	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
