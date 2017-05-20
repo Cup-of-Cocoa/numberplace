@@ -23,17 +23,14 @@ public abstract class NanpureSolver {
 		}
 	}
 
-	//�Ֆʂ����܂��Ă��邩�ǂ���
 	public boolean boardIsFull() {
 		return emptyBoxList.isEmpty();
 	}
 
-	//�ꏊp�������鏬���ȃu���b�N�i�X�~�X�̔ՖʂȂ�R�~�R�̕����j�̒��ŁA����n�����݂��Ȃ��A
-	//�܂萔��n��������Ȃ�true��Ԃ��B
-	//�ꏊ�͍��ォ��n�߂ĉE�ɂ����A�[�܂ŗ����玟�̍s�Ɉڂ�Ƃ������ԂŔԍ������ĕ\���B
+
 	public abstract boolean isPlaceableInBlock(int n, int p);
 
-	//�ꏊp�Ɠ����s����ɐ���n�����݂��Ȃ��Ȃ�true��Ԃ��B
+
 	public boolean isPlaceable(int n, int p) {
 		if(board[p] != 0) return false;
 		for (int i = 0; i < size; i++) {
