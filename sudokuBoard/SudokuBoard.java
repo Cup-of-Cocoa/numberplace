@@ -46,7 +46,8 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	static final String EMPTY = "0";//numberPlaceパッケージ内のプログラムの都合上空白マスは0で表している
 	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
 
-	static final String SPACE_AC = "Space" , NUMBER_AC_INITIAL = "N";
+	static final String SPACE_AC = "Space", NUMBER_AC_INITIAL = "N", EO_AC = "E-O";
+    static final String BASIC_AC = "BASIC", DIAG_AC = "DIAG", OK_AC = "OK", EVENODD_AC = "EVEN-ODD";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
@@ -73,7 +74,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 			numbersPanel.add(number);
 		}
 		evenOddButton = new JButton("E-O");
-		evenOddButton.setActionCommand("E-O");
+		evenOddButton.setActionCommand(EO_AC);
 		evenOddButton.addActionListener(this);
 		evenOddButton.setEnabled(false);//even-oddモードの時だけ使える
 		numbersPanel.add(evenOddButton);
@@ -83,13 +84,13 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		//解く問題の種類を選ぶボタンをつくる
 		modePanel = new JPanel(new GridLayout(4,1));
 		basicModeButton = new JRadioButton("Basic", true);
-		basicModeButton.setActionCommand("BASIC");
+		basicModeButton.setActionCommand(BASIC_AC);
 		basicModeButton.addActionListener(this);
 		diagModeButton = new JRadioButton("Diagnoal");
-		diagModeButton.setActionCommand("DIAG");
+		diagModeButton.setActionCommand(DIAG_AC);
 		diagModeButton.addActionListener(this);
 		evenOddModeButton = new JRadioButton("Even-Odd");
-		evenOddModeButton.setActionCommand("EVEN-ODD");
+		evenOddModeButton.setActionCommand(EVENODD_AC);
 		evenOddModeButton.addActionListener(this);
 		zigzagModeButton = new JRadioButton("Zigzag");
 		zigzagModeButton.setEnabled(false);
@@ -106,7 +107,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		//OKボタンをつくる
 		okButton = new JButton("OK");
 		okButton.addActionListener(this);
-		okButton.setActionCommand("OK");
+		okButton.setActionCommand(OK_AC);
 		add(okButton);
 	}
 
