@@ -12,14 +12,8 @@ public class BasicNanpureSolver extends NanpureSolver{
 		for (int i = spnum; i < spnum+3; i++) {
 			if(board[i] == n) return false;
 			if(board[i+size] == n) return false;
-			if(board[i+size*2] == n) return false;			
+			if(board[i+size*2] == n) return false;
 		}
 		return true;
-	}
-
-	public static void main(String[] args) {
-		BasicNanpureSolver n = new BasicNanpureSolver(args);
-		n.solveAll();
-
 	}
 }

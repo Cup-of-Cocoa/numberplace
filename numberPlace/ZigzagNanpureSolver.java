@@ -33,10 +33,4 @@ public class ZigzagNanpureSolver extends NanpureSolver{
 		}
 		return true;
 	}
-
-	public static void main(String[] args) {
-		ZigzagNanpureSolver n = new ZigzagNanpureSolver(args);
-		n.solveAll();
-
-	}
 }

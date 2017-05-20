@@ -27,10 +27,4 @@ public class MiniBasicNanpureSolver extends NanpureSolver{
 		}
 		System.out.println();
 	}
-
-
-	public static void main(String[] args) {
-		MiniBasicNanpureSolver n = new MiniBasicNanpureSolver(args);
-		n.solveAll();
-	}
 }

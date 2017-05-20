@@ -48,9 +48,4 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 		}
 		return isPlaceableInSpPoint(n, p);
 	}
-
-	public static void main(String[] args) {
-		EvenOddNanpureSolver n = new EvenOddNanpureSolver(args);
-		n.solveAll();
-	}
 }
