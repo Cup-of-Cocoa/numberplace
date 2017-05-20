@@ -23,7 +23,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 	}
 
 	void setBoard(){
-		boardPanel = new JPanel(new GridLayout(11,11));
+		boardPanel = new JPanel(new GridLayout(Sudoku.BASIC_SIZE+2, Sudoku.BASIC_SIZE+2));
 		for(int i = 0; i < 11; i++) {
 			for (int j = 0; j < 11; j++) {
 				if (i == 3 || i == 7) boardPanel.add(new JLabel(""));
