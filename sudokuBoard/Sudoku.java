@@ -15,6 +15,7 @@ public class Sudoku extends JFrame implements ActionListener{
 	//予定
 	//数字全クリアボタンをつくる
 	//２個以上答えがあるときそれをすべて表示のチェックボックスをつくる
+	//大量の定数をEnum型で管理する
 
 	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
