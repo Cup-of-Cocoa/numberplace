@@ -19,11 +19,9 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 			}
 			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
+		if(this.board[even_oddList.get(0)]%2 ==1) isEvenBoard = false;
 		for (int i = 0; i < even_oddList.size(); i++) {
-			if(this.board[even_oddList.get(i)]%2 == 1) {
-				isEvenBoard = false;
-				break;
-			}
+			if(isEvenBoard ^ (even_oddList.get(i)%2 == 0)) ;
 		}
 	}
 
