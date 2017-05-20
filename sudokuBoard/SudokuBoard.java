@@ -311,8 +311,9 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			else {
 				if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
 				else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
-				/*else if (evenOddModeButton.isSelected()) {
-					/*String[] newBoard = new String[boardSize*boardSize];
+				/*
+				else if (evenOddModeButton.isSelected()) {
+					String[] newBoard = new String[boardSize*boardSize];
 					for (int i=0; i < boardSize*boardSize; i++) {
 						if(numberBoard.get(i).getIcon().equals(eobox_unselected)) {
 							newBoard[i] = SudokuBoard.EVENODD_MAGIC_NUMBER + board[i];
@@ -323,8 +324,9 @@ public class SudokuBoard extends JFrame implements ActionListener{
 					}
 					n = new EvenOddNanpureSolver(newBoard);
 					}
+
+				else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
 				 */
-				//else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
 				else n = new BasicNanpureSolver(board);
 				if(solveAllCheckBox.isSelected()) n.solveAll();
 				else {
