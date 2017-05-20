@@ -131,7 +131,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		}
 		add(boardPanel);
 		//解く問題の種類を選ぶボタンをつくる
-		modePanel = new JPanel(new GridLayout(4,1));
+		modePanel = new JPanel(new GridLayout(Sudoku.NUM_OF_SUDOKU_VARIATIONS,1));
 		basicModeButton = new JRadioButton("Basic", true);
 		basicModeButton.setActionCommand(BASIC_AC);
 		basicModeButton.addActionListener(this);
