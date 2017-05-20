@@ -76,7 +76,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタンをつくる
 		numbersPanel = new JPanel(new GridLayout(1,num_of_Buttons));
-		spaceButton = new JButton("");//入力を消す用のボタン
+		spaceButton = new JButton(Sudoku.EMPTY_BOX);//入力を消す用のボタン
 		spaceButton.setActionCommand(SPACE_AC);
 		spaceButton.addActionListener(this);
 		numbersPanel.add(spaceButton);
@@ -101,8 +101,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			boardPanel = new JPanel(new GridLayout(Sudoku.BASIC_SIZE+2, Sudoku.BASIC_SIZE+2));
 			for(int i = 0; i < Sudoku.BASIC_SIZE+2; i++) {
 				for (int j = 0; j < Sudoku.BASIC_SIZE+2; j++) {
-					if (i%4 == 3) boardPanel.add(new JLabel(""));
-					else if (j%4 == 3) boardPanel.add(new JLabel(""));
+					if (i%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
+					else if (j%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
 					else {
 						JRadioButton box = makeBox();
 						boardPanel.add(box);
@@ -117,8 +117,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			boardPanel = new JPanel(new GridLayout(Sudoku.MINI_SIZE+2 ,Sudoku.MINI_SIZE+1));
 			for(int i = 0; i < Sudoku.MINI_SIZE+2; i++) {
 				for (int j = 0; j < Sudoku.MINI_SIZE+1; j++) {
-					if (i%3 == 2) boardPanel.add(new JLabel(" "));
-					else if (j%4 == 3) boardPanel.add(new JLabel(" "));
+					if (i%3 == 2) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
+					else if (j%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
 					else {
 						JRadioButton box = makeBox();
 						boardPanel.add(box);
@@ -168,8 +168,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		boardPanel = new JPanel(new GridLayout(Sudoku.BASIC_SIZE+2, Sudoku.BASIC_SIZE+2));
 		for(int i = 0; i < Sudoku.BASIC_SIZE+2; i++) {
 			for (int j = 0; j < Sudoku.BASIC_SIZE+2; j++) {
-				if (i%4 == 3) boardPanel.add(new JLabel(""));
-				else if (j%4 == 3) boardPanel.add(new JLabel(""));
+				if (i%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
+				else if (j%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
 				else {
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
@@ -186,8 +186,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		boardPanel = new JPanel(new GridLayout(Sudoku.MINI_SIZE+2 ,Sudoku.MINI_SIZE+1));
 		for(int i = 0; i < Sudoku.MINI_SIZE+2; i++) {
 			for (int j = 0; j < Sudoku.MINI_SIZE+1; j++) {
-				if (i%3 == 2) boardPanel.add(new JLabel(" "));
-				else if (j%4 == 3) boardPanel.add(new JLabel(" "));
+				if (i%3 == 2) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
+				else if (j%4 == 3) boardPanel.add(new JLabel(Sudoku.EMPTY_BOX));
 				else {
 					JRadioButton box = makeBox();
 					boardPanel.add(box);
@@ -202,7 +202,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 
 	void clearBoard(){
 		for(int i=0; i < boardSize*boardSize; i++) {
-			numberBoard.get(i).setText("");
+			numberBoard.get(i).setText(Sudoku.EMPTY_BOX);
 			board[i] = EMPTY;
 		}
 	}

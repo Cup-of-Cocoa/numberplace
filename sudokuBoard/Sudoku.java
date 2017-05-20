@@ -27,9 +27,11 @@ public class Sudoku extends JFrame implements ActionListener{
 	static final String TITLE = "Number Place", MENU_NAME = "Board";
 	static final String BASIC_BOARD_MENU = "Basic", MINI_BOARD_NAME = "MINI";
 	static final String BASIC_BOARD_AC = "basic", MINI_BOARD_AC = "mini";
+	static final String EMPTY_BOX = "";
 	private SudokuBoard basicBoard = new SudokuBoard(BASIC_SIZE);
 	private SudokuBoard miniBoard = new SudokuBoard(MINI_SIZE);
 	static int sudokuMode = BASIC_MODE;
+
 
 	public Sudoku() {
 		setTitle(TITLE);
