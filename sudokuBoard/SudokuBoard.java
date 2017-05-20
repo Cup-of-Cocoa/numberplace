@@ -281,6 +281,13 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			validate();
 		}
 		else if (e.getActionCommand().equals(EVENODD_AC)) {
+			for(JRadioButton rb: numberBoard) {
+				if(rb.getIcon().equals(eobox_selected) || rb.getIcon().equals(eobox_unselected)) continue;
+				else {
+					rb.setIcon(box_unselected);
+					rb.setSelectedIcon(box_selected);
+				}
+			}
 			evenOddButton.setEnabled(true);
 			validate();
 		}
