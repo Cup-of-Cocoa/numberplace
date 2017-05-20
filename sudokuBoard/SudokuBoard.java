@@ -274,8 +274,10 @@ public class SudokuBoard extends JFrame implements ActionListener{
 				numberBoard.get(boardSize*(i+1)-(i+1)).setIcon(dbox_unselected2);
 				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(dbox_selected2);
 			}
-			numberBoard.get(SUDOKU_CENTER).setIcon(dbox_unselected3);
-			numberBoard.get(SUDOKU_CENTER).setSelectedIcon(dbox_selected3);
+			if (Sudoku.sudokuMode == Sudoku.BASIC_MODE) {
+				numberBoard.get(SUDOKU_CENTER).setIcon(dbox_unselected3);
+				numberBoard.get(SUDOKU_CENTER).setSelectedIcon(dbox_selected3);
+			}
 			validate();
 		}
 		else if (e.getActionCommand().equals(EVENODD_AC)) {
