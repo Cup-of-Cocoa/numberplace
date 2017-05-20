@@ -59,6 +59,26 @@ public abstract class NanpureSolver {
 		}
 	}
 
+	public void solve(){
+		if(!boardIsFull()) {
+			for(int n = 1; n <= size; n++){
+				int i = emptyBoxList.get(0);
+				if(isPlaceable(n, i)) {
+					board[emptyBoxList.get(0)] = n;
+					emptyBoxList.remove(0);
+					solveAll();
+					board[i] = 0;
+					emptyBoxList.add(0,i);
+				}
+			}
+
+		}
+		else {
+			outputBoard();
+			return;
+		}
+	}
+
 	public void outputBoard() {
 		for(int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
