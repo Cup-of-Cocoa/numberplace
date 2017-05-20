@@ -153,7 +153,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
-		checkPanel = new JPanel(new GridLayout(1,1));
+		checkPanel = new JPanel(new GridLayout(Sudoku.NUM_OF_OPTIONS,1));
 		solveAllCheckBox = new JCheckBox("答えをすべて表示する");
 		checkPanel.add(solveAllCheckBox);
 		add(checkPanel);
