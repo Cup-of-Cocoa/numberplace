@@ -21,6 +21,8 @@ import javax.swing.JRadioButton;
 import numberPlace.BasicNanpureSolver;
 import numberPlace.DiagnoalNanpureSolver;
 import numberPlace.EvenOddNanpureSolver;
+import numberPlace.MiniBasicNanpureSolver;
+import numberPlace.MiniDiagnoalNanpureSolver;
 import numberPlace.NanpureSolver;
 import numberPlace.ZigzagNanpureSolver;
 
@@ -282,25 +284,49 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		}
 		else if (e.getActionCommand().equals(OK_AC)) {
 			NanpureSolver n;
-			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(board);
-			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(board);
-			else if (evenOddModeButton.isSelected()) {
-				String[] newBoard = new String[boardSize*boardSize];
-				for (int i=0; i < boardSize*boardSize; i++) {
-					if(numberBoard.get(i).getIcon().equals(eobox_unselected)) {
-						newBoard[i] = SudokuBoard.EVENODD_MAGIC_NUMBER + board[i];
+			if (Sudoku.sudokuMode == Sudoku.BASIC_MODE) {
+				if (basicModeButton.isSelected()) n = new BasicNanpureSolver(board);
+				else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(board);
+				else if (evenOddModeButton.isSelected()) {
+					String[] newBoard = new String[boardSize*boardSize];
+					for (int i=0; i < boardSize*boardSize; i++) {
+						if(numberBoard.get(i).getIcon().equals(eobox_unselected)) {
+							newBoard[i] = SudokuBoard.EVENODD_MAGIC_NUMBER + board[i];
+						}
+						else {
+							newBoard[i] = board[i];
+						}
 					}
-					else {
-						newBoard[i] = board[i];
-					}
+					n = new EvenOddNanpureSolver(newBoard);
 				}
-				n = new EvenOddNanpureSolver(newBoard);
+				else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
+				else n = new BasicNanpureSolver(board);
+				if(solveAllCheckBox.isSelected()) n.solveAll();
+				else {
+					n.solve();
+				}
 			}
-			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
-			else n = new BasicNanpureSolver(board);
-			if(solveAllCheckBox.isSelected()) n.solveAll();
 			else {
-				n.solve();
+				if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
+				else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);
+				/*else if (evenOddModeButton.isSelected()) {
+					/*String[] newBoard = new String[boardSize*boardSize];
+					for (int i=0; i < boardSize*boardSize; i++) {
+						if(numberBoard.get(i).getIcon().equals(eobox_unselected)) {
+							newBoard[i] = SudokuBoard.EVENODD_MAGIC_NUMBER + board[i];
+						}
+						else {
+							newBoard[i] = board[i];
+						}
+					}
+					n = new EvenOddNanpureSolver(newBoard);
+					}	*/
+				//else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
+				else n = new BasicNanpureSolver(board);
+				if(solveAllCheckBox.isSelected()) n.solveAll();
+				else {
+					n.solve();
+				}
 			}
 		}
 	}
