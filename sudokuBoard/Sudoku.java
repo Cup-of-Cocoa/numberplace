@@ -16,7 +16,6 @@ public class Sudoku extends JFrame implements ActionListener{
 	//数字全クリアボタンをつくる
 	//２個以上答えがあるときそれをすべて表示のチェックボックスをつくる
 	//大量の定数をEnum型で管理する
-	//SudokuBoardクラスに二つの子クラスをまとめたい
 
 	JMenuBar sudokuMenuBar;
 	JMenu boardMode;
@@ -25,8 +24,8 @@ public class Sudoku extends JFrame implements ActionListener{
 	static final int MINI_SUDOKU_BOARD_WIDTH = 500, MINI_SUDOKU_BOARD_HEIGHT = 350;
 	static final int MINI_SIZE = 6, BASIC_SIZE = 9, INITIAL_SELECTED_BOX = 0;
 	static final String TITLE = "Number Place";
-	private SudokuBoard basicBoard = new SudokuBasicBoard();
-	private SudokuBoard miniBoard = new SudokuMiniBoard();
+	private SudokuBoard basicBoard = new SudokuBoard(BASIC_SIZE);
+	private SudokuBoard miniBoard = new SudokuBoard(MINI_SIZE);
 
 	public Sudoku() {
 		setTitle(TITLE);
