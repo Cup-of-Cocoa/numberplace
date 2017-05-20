@@ -3,9 +3,9 @@ package numberPlace;
 import java.util.ArrayList;
 
 public abstract class NanpureSolver {
-	int[] board; //”Õ–Ê
-	int size; //ˆê•Ó‚Ìƒ}ƒX”
-	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();//‹ó‚¢‚Ä‚éƒ}ƒX‚ÌƒŠƒXƒg
+	int[] board;
+	int size;
+	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();
 
 	public NanpureSolver(){}
 
@@ -22,25 +22,25 @@ public abstract class NanpureSolver {
 			if (this.board[i] == 0) emptyBoxList.add(i);
 		}
 	}
-	
-	//”Õ–Ê‚ª–„‚Ü‚Á‚Ä‚¢‚é‚©‚Ç‚¤‚©
+
+	//ï¿½Õ–Ê‚ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½Ä‚ï¿½ï¿½é‚©ï¿½Ç‚ï¿½ï¿½ï¿½
 	public boolean boardIsFull() {
-		return emptyBoxList.isEmpty();	
+		return emptyBoxList.isEmpty();
 	}
-	
-	//êŠp‚ª‘®‚·‚é¬‚³‚ÈƒuƒƒbƒNi‚X~‚X‚Ì”Õ–Ê‚È‚ç‚R~‚R‚Ì•”•ªj‚Ì’†‚ÅA”šn‚ª‘¶İ‚µ‚È‚¢A
-	//‚Â‚Ü‚è”šn‚ª‚¨‚¯‚é‚È‚çtrue‚ğ•Ô‚·B
-	//êŠ‚Í¶ã‚©‚çn‚ß‚Ä‰E‚É‚¢‚«A’[‚Ü‚Å—ˆ‚½‚çŸ‚Ìs‚ÉˆÚ‚é‚Æ‚¢‚¤‡”Ô‚Å”Ô†‚ğ‚Â‚¯‚Ä•\‚·B
+
+	//ï¿½êŠpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é¬ï¿½ï¿½ï¿½Èƒuï¿½ï¿½ï¿½bï¿½Nï¿½iï¿½Xï¿½~ï¿½Xï¿½Ì”Õ–Ê‚È‚ï¿½Rï¿½~ï¿½Rï¿½Ì•ï¿½ï¿½ï¿½ï¿½jï¿½Ì’ï¿½ï¿½ÅAï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½A
+	//ï¿½Â‚Ü‚è”ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½trueï¿½ï¿½Ô‚ï¿½ï¿½B
+	//ï¿½êŠï¿½Íï¿½ï¿½ã‚©ï¿½ï¿½nï¿½ß‚Ä‰Eï¿½É‚ï¿½ï¿½ï¿½ï¿½Aï¿½[ï¿½Ü‚Å—ï¿½ï¿½ï¿½ï¿½çŸï¿½Ìsï¿½ÉˆÚ‚ï¿½Æ‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚Å”Ôï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½Ä•\ï¿½ï¿½ï¿½B
 	public abstract boolean isPlaceableInBlock(int n, int p);
 
-	//êŠp‚Æ“¯‚¶s‚©—ñ‚É”šn‚ª‘¶İ‚µ‚È‚¢‚È‚çtrue‚ğ•Ô‚·B
+	//ï¿½êŠpï¿½Æ“ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½Éï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½trueï¿½ï¿½Ô‚ï¿½ï¿½B
 	public boolean isPlaceable(int n, int p) {
 		if(board[p] != 0) return false;
 		for (int i = 0; i < size; i++) {
-			if(board[(p/size)*size+i] == n) return false; 
+			if(board[(p/size)*size+i] == n) return false;
 			if(board[i*size+p%size] == n) return false;
 		}
-		return isPlaceableInBlock(n,p);		
+		return isPlaceableInBlock(n,p);
 	}
 
 	public void solve(){
@@ -50,8 +50,8 @@ public abstract class NanpureSolver {
 				if(isPlaceable(n, i)) {
 					board[emptyBoxList.get(0)] = n;
 					emptyBoxList.remove(0);
-					solve();     
-					board[i] = 0; 
+					solve();
+					board[i] = 0;
 					emptyBoxList.add(0,i);
 				}
 			}

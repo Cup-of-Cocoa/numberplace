@@ -2,9 +2,8 @@ package numberPlace;
 
 public class ZigzagNanpureSolver extends NanpureSolver{
 	int[][] blocks;
-	//ブロックに番号を付ける
-	//入力は、百の位が元の値、十の位がブロックの番号、一の位がブロックの何番めの数字か、
-	//を表すように入れる。
+
+
 	public ZigzagNanpureSolver(String[] board){
 		size = (int)Math.sqrt(board.length);
 		this.board = new int[size*size];

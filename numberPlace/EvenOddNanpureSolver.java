@@ -5,8 +5,7 @@ import java.util.ArrayList;
 public class EvenOddNanpureSolver extends NanpureSolver{
 	ArrayList<Integer> even_oddList = new ArrayList<Integer>();
 	boolean isEvenBoard = true;
-	//偶数または奇数のみ、のマスは十の位を１にする。
-	//元の数字は一の位の数字。
+
 	public EvenOddNanpureSolver(String[] board){
 		size = (int)Math.sqrt(board.length);
 		this.board = new int[size*size];
@@ -24,7 +23,7 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 			if(this.board[even_oddList.get(i)]%2 == 1) {
 				isEvenBoard = false;
 				break;
-			}				
+			}
 		}
 	}
 
@@ -45,7 +44,7 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 		for (int i = spnum; i < spnum+3; i++) {
 			if(board[i] == n) return false;
 			if(board[i+size] == n) return false;
-			if(board[i+size*2] == n) return false;			
+			if(board[i+size*2] == n) return false;
 		}
 		return isPlaceableInSpPoint(n, p);
 	}
