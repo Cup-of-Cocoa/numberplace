@@ -22,7 +22,9 @@ public class Sudoku extends JFrame implements ActionListener{
 	static final int MINI_SUDOKU_BOARD_WIDTH = 530, MINI_SUDOKU_BOARD_HEIGHT = 350;
 	static final int MINI_SIZE = 6, BASIC_SIZE = 9, INITIAL_SELECTED_BOX = 0;
 	static final int BASIC_MODE = 0, MINI_MODE = 1;
-	static final String TITLE = "Number Place";
+	static final String TITLE = "Number Place", MENU_NAME = "Board";
+	static final String BASIC_BOARD_MENU = "Basic", MINI_BOARD_NAME = "MINI";
+	static final String BASIC_BOARD_AC = "basic", MINI_BOARD_AC = "mini";
 	private SudokuBoard basicBoard = new SudokuBoard(BASIC_SIZE);
 	private SudokuBoard miniBoard = new SudokuBoard(MINI_SIZE);
 	static int sudokuMode = BASIC_MODE;
@@ -35,11 +37,11 @@ public class Sudoku extends JFrame implements ActionListener{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 
 		sudokuMenuBar = new JMenuBar();
-		boardMode = new JMenu("Board");
-		basic = new JMenuItem("Basic");//通常の盤面
-		mini = new JMenuItem("Mini");//小さい盤面
-		basic.setActionCommand("basic");
-		mini.setActionCommand("mini");
+		boardMode = new JMenu(MENU_NAME);
+		basic = new JMenuItem(BASIC_BOARD_MENU);//通常の盤面
+		mini = new JMenuItem(MINI_BOARD_NAME);//小さい盤面
+		basic.setActionCommand(BASIC_BOARD_AC);
+		mini.setActionCommand(MINI_BOARD_AC);
 		basic.addActionListener(this);
 		mini.addActionListener(this);
 		boardMode.add(basic);
@@ -51,14 +53,14 @@ public class Sudoku extends JFrame implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("basic")) {
+		if(e.getActionCommand().equals(BASIC_BOARD_AC)) {
 			sudokuMode = BASIC_MODE;
 			basicBoard.clearBoard();
 			setSize(SUDOKU_BOARD_WIDTH, SUDOKU_BOARD_HEIGHT);
 			setContentPane(basicBoard.getContentPane());
 			setVisible(true);
 		}
-		else if(e.getActionCommand().equals("mini")) {
+		else if(e.getActionCommand().equals(MINI_BOARD_AC)) {
 			sudokuMode = MINI_MODE;
 			miniBoard.clearBoard();
 			setSize(MINI_SUDOKU_BOARD_WIDTH, MINI_SUDOKU_BOARD_HEIGHT);
