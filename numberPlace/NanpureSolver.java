@@ -66,7 +66,7 @@ public abstract class NanpureSolver {
 				if(isPlaceable(n, i)) {
 					board[emptyBoxList.get(0)] = n;
 					emptyBoxList.remove(0);
-					solveAll();
+					solve();
 					board[i] = 0;
 					emptyBoxList.add(0,i);
 				}
