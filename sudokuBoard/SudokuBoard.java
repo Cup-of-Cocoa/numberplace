@@ -53,7 +53,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 	final int iconHeight = box_unselected.getIconHeight();
 	final int num_of_Buttons = boardSize+3;//EMPTY, E-O, ALLCLEARのボタン
 
-	static final int SUDOKU_CENTER = 40;//真ん中のマスの位置
+	static final int BASIC_BOARD_CENTER = 40;//真ん中のマスの位置
 	static final int PLACE_INDEX_STRING = 1;//どの数字が押されたかを表すのはアクションコマンドの２文字目
 	static final String EMPTY = "0";//numberPlaceパッケージ内のプログラムの都合上空白マスは0で表している
 	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
@@ -275,8 +275,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 				numberBoard.get(boardSize*(i+1)-(i+1)).setSelectedIcon(dbox_selected2);
 			}
 			if (Sudoku.sudokuMode == Sudoku.BASIC_MODE) {
-				numberBoard.get(SUDOKU_CENTER).setIcon(dbox_unselected3);
-				numberBoard.get(SUDOKU_CENTER).setSelectedIcon(dbox_selected3);
+				numberBoard.get(BASIC_BOARD_CENTER).setIcon(dbox_unselected3);
+				numberBoard.get(BASIC_BOARD_CENTER).setSelectedIcon(dbox_selected3);
 			}
 			validate();
 		}
