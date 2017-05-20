@@ -46,7 +46,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	static final String EMPTY = "0";//numberPlaceパッケージ内のプログラムの都合上空白マスは0で表している
 	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
 
-	static final String SPACE_AC = "Space";
+	static final String SPACE_AC = "Space" , NUMBER_AC_INITIAL = "N";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
@@ -68,7 +68,7 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		numbersPanel.add(spaceButton);
 		for(int i = 1; i <= board_size; i++) {
 			JButton number = new JButton(Integer.toString(i));
-			number.setActionCommand("N" + Integer.toString(i));//数字を表すために"N"をつけておく
+			number.setActionCommand(NUMBER_AC_INITIAL + Integer.toString(i));//数字を表すために"N"をつけておく
 			number.addActionListener(this);
 			numbersPanel.add(number);
 		}
