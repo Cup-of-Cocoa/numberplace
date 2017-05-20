@@ -36,7 +36,7 @@ public class ZigzagNanpureSolver extends NanpureSolver{
 
 	public static void main(String[] args) {
 		ZigzagNanpureSolver n = new ZigzagNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 
 	}
 }

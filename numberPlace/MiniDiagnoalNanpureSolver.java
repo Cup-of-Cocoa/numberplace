@@ -45,6 +45,6 @@ public class MiniDiagnoalNanpureSolver extends NanpureSolver{
 	}
 	public static void main(String[] args) {
 		MiniDiagnoalNanpureSolver n = new MiniDiagnoalNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 	}
 }

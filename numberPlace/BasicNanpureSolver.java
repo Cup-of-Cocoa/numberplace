@@ -19,7 +19,7 @@ public class BasicNanpureSolver extends NanpureSolver{
 
 	public static void main(String[] args) {
 		BasicNanpureSolver n = new BasicNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 
 	}
 }

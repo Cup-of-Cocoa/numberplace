@@ -40,14 +40,14 @@ public abstract class NanpureSolver {
 		return isPlaceableInBlock(n,p);
 	}
 
-	public void solve(){
+	public void solveAll(){
 		if(!boardIsFull()) {
 			for(int n = 1; n <= size; n++){
 				int i = emptyBoxList.get(0);
 				if(isPlaceable(n, i)) {
 					board[emptyBoxList.get(0)] = n;
 					emptyBoxList.remove(0);
-					solve();
+					solveAll();
 					board[i] = 0;
 					emptyBoxList.add(0,i);
 				}
@@ -57,7 +57,6 @@ public abstract class NanpureSolver {
 		else {
 			outputBoard();
 		}
-
 	}
 
 	public void outputBoard() {

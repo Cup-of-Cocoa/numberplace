@@ -46,6 +46,6 @@ public class DiagnoalNanpureSolver extends NanpureSolver{
 
 	public static void main(String[] args) {
 		DiagnoalNanpureSolver n = new DiagnoalNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 	}
 }

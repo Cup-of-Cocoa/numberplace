@@ -51,6 +51,6 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 
 	public static void main(String[] args) {
 		EvenOddNanpureSolver n = new EvenOddNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 	}
 }

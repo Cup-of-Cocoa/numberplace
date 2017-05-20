@@ -31,6 +31,6 @@ public class MiniBasicNanpureSolver extends NanpureSolver{
 
 	public static void main(String[] args) {
 		MiniBasicNanpureSolver n = new MiniBasicNanpureSolver(args);
-		n.solve();
+		n.solveAll();
 	}
 }
