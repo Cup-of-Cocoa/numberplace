@@ -29,7 +29,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 
 	JPanel numbersPanel, boardPanel, modePanel;
 	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
-	JButton spaceButton, evenOddButton, okButton;
+	JButton spaceButton, evenOddButton, allClearButton, okButton;
 	List<JRadioButton> numberBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
 	int boardSize;
@@ -47,7 +47,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));
 	final int iconWidth = box_unselected.getIconWidth();
 	final int iconHeight = box_unselected.getIconHeight();
-	final int num_of_Buttons = boardSize+2;
+	final int num_of_Buttons = boardSize+3;//EMPTY, E-O, ALLCLEARのボタン
 
 	static final int SUDOKU_CENTER = 40;//真ん中のマスの位置
 	static final int PLACE_INDEX_STRING = 1;//どの数字が押されたかを表すのはアクションコマンドの２文字目
@@ -56,6 +56,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 
 	static final String SPACE_AC = "Space", NUMBER_AC_INITIAL = "N", EO_AC = "E-O";
     static final String BASIC_AC = "BASIC", DIAG_AC = "DIAG", OK_AC = "OK", EVENODD_AC = "EVEN-ODD";
+    static final String AC_AC = "ALLCLEAR";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
@@ -86,6 +87,10 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		evenOddButton.addActionListener(this);
 		evenOddButton.setEnabled(false);//even-oddモードの時だけ使える
 		numbersPanel.add(evenOddButton);
+		allClearButton = new JButton("AC");
+		allClearButton.setActionCommand(AC_AC);
+		allClearButton.addActionListener(this);
+		numbersPanel.add(allClearButton);
 		add(numbersPanel);
 		//数字が入る盤面
 		if(boardSize == Sudoku.BASIC_SIZE) {
@@ -192,7 +197,6 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			numberBoard.get(i).setText("");
 			board[i] = EMPTY;
 		}
-		numberBoard.get(0).setSelected(true);
 	}
 
 	JRadioButton makeBox() {
@@ -242,6 +246,10 @@ public class SudokuBoard extends JFrame implements ActionListener{
 					}
 				}
 			}
+			validate();
+		}
+		else if (e.getActionCommand().equals(AC_AC)) {
+			clearBoard();
 			validate();
 		}
 		else if (e.getActionCommand().equals(BASIC_AC)) {
