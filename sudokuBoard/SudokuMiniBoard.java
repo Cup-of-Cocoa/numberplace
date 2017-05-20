@@ -21,9 +21,9 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 	}
 
 	void setBoard(){
-		boardPanel = new JPanel(new GridLayout(8,7));
-		for(int i = 0; i < 8; i++) {
-			for (int j = 0; j < 7; j++) {
+		boardPanel = new JPanel(new GridLayout(Sudoku.MINI_SIZE+2 ,Sudoku.MINI_SIZE+1));
+		for(int i = 0; i < Sudoku.MINI_SIZE+2; i++) {
+			for (int j = 0; j < Sudoku.MINI_SIZE+1; j++) {
 				if (i == 2 || i == 5) boardPanel.add(new JLabel(" "));
 				else if (j == 3) boardPanel.add(new JLabel(" "));
 				else {
@@ -34,7 +34,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		numberBoard.get(0).setSelected(true);
+		numberBoard.get(Sudoku.INITIAL_SELECTED_BOX).setSelected(true);
 		add(boardPanel);
 	}
 
