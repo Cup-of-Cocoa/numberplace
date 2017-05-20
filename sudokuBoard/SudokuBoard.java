@@ -327,7 +327,7 @@ public class SudokuBoard extends JFrame implements ActionListener{
 
 				else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
 				 */
-				else n = new BasicNanpureSolver(board);
+				else n = new MiniBasicNanpureSolver(board);
 				if(solveAllCheckBox.isSelected()) n.solveAll();
 				else {
 					n.solve();
