@@ -39,11 +39,14 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("./eobox_selected.png"));
 	final int iconWidth = box_unselected.getIconWidth();
 	final int iconHeight = box_unselected.getIconHeight();
+	final int num_of_Buttons = boardSize+2;
 
 	static final int SUDOKU_CENTER = 40;//真ん中のマスの位置
 	static final int PLACE_INDEX_STRING = 1;//どの数字が押されたかを表すのはアクションコマンドの２文字目
 	static final String EMPTY = "0";//numberPlaceパッケージ内のプログラムの都合上空白マスは0で表している
 	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
+
+	static final String SPACE_AC = "Space";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
@@ -58,9 +61,9 @@ public abstract class SudokuBoard extends JFrame implements ActionListener{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//×を押したらウィンドウを閉じる
 		//数字入力用のボタンをつくる
-		numbersPanel = new JPanel(new GridLayout(1,board_size+2));
+		numbersPanel = new JPanel(new GridLayout(1,num_of_Buttons));
 		spaceButton = new JButton("");//入力を消す用のボタン
-		spaceButton.setActionCommand("SPACE");
+		spaceButton.setActionCommand(SPACE_AC);
 		spaceButton.addActionListener(this);
 		numbersPanel.add(spaceButton);
 		for(int i = 1; i <= board_size; i++) {
