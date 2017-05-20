@@ -39,7 +39,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().startsWith("N")) {//数字が押されたとき
+		if (e.getActionCommand().startsWith(NUMBER_AC_INITIAL)) {//数字が押されたとき
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = e.getActionCommand().substring(PLACE_INDEX_STRING);
@@ -48,7 +48,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("SPACE")) {//空白が押されたとき
+		else if (e.getActionCommand().equals(SPACE_AC)) {//空白が押されたとき
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = SudokuBoard.EMPTY;
@@ -57,12 +57,12 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("BASIC")) {
+		else if (e.getActionCommand().equals(BASIC_AC)) {
 			setNormalBoard();
 			evenOddButton.setEnabled(false);
 			validate();
 		}
-		else if (e.getActionCommand().equals("DIAG")) {
+		else if (e.getActionCommand().equals(DIAG_AC)) {
 			setNormalBoard();
 			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
@@ -73,7 +73,7 @@ public class SudokuMiniBoard extends SudokuBoard implements ActionListener{
 			}
 			validate();
 		}
-		else if (e.getActionCommand().equals("OK")) {
+		else if (e.getActionCommand().equals(OK_AC)) {
 			NanpureSolver n;
 			if (basicModeButton.isSelected()) n = new MiniBasicNanpureSolver(board);
 			else if (diagModeButton.isSelected()) n = new MiniDiagnoalNanpureSolver(board);

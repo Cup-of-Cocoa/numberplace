@@ -41,7 +41,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().startsWith("N")) {
+		if (e.getActionCommand().startsWith(NUMBER_AC_INITIAL)) {
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = e.getActionCommand().substring(PLACE_INDEX_STRING);
@@ -50,7 +50,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("SPACE")) {
+		else if (e.getActionCommand().equals(SPACE_AC)) {
 			for(int i=0; i < boardSize*boardSize; i++) {
 				if(numberBoard.get(i).isSelected()) {
 					board[i] = SudokuBoard.EMPTY;
@@ -59,7 +59,7 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 				}
 			}
 		}
-		else if (e.getActionCommand().equals("E-O")) {
+		else if (e.getActionCommand().equals(EO_AC)) {
 			for(JRadioButton rb: numberBoard) {
 				if(rb.isSelected()) {
 					if(rb.getIcon().equals(box_unselected)){
@@ -74,12 +74,12 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			}
 			validate();
 		}
-		else if (e.getActionCommand().equals("BASIC")) {
+		else if (e.getActionCommand().equals(BASIC_AC)) {
 			setNormalBoard();
 			evenOddButton.setEnabled(false);
 			validate();
 		}
-		else if (e.getActionCommand().equals("DIAG")) {
+		else if (e.getActionCommand().equals(DIAG_AC)) {
 			setNormalBoard();
 			evenOddButton.setEnabled(false);
 			for(int i=0; i < boardSize; i++) {
@@ -92,11 +92,11 @@ public class SudokuBasicBoard extends SudokuBoard implements ActionListener{
 			numberBoard.get(SUDOKU_CENTER).setSelectedIcon(dbox_selected3);
 			validate();
 		}
-		else if (e.getActionCommand().equals("EVEN-ODD")) {
+		else if (e.getActionCommand().equals(EVENODD_AC)) {
 			evenOddButton.setEnabled(true);
 			validate();
 		}
-		else if (e.getActionCommand().equals("OK")) {
+		else if (e.getActionCommand().equals(OK_AC)) {
 			NanpureSolver n;
 			if (basicModeButton.isSelected()) n = new BasicNanpureSolver(board);
 			else if (diagModeButton.isSelected()) n = new DiagnoalNanpureSolver(board);
