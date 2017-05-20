@@ -57,8 +57,8 @@ public class SudokuBoard extends JFrame implements ActionListener{
 	static final String EVENODD_MAGIC_NUMBER = "1";//上と同じ理由で偶数奇数マス内の数字は頭に1をつけて表す
 
 	static final String SPACE_AC = "Space", NUMBER_AC_INITIAL = "N", EO_AC = "E-O";
-    static final String BASIC_AC = "BASIC", DIAG_AC = "DIAG", OK_AC = "OK", EVENODD_AC = "EVEN-ODD";
-    static final String AC_AC = "ALLCLEAR";
+	static final String BASIC_AC = "BASIC", DIAG_AC = "DIAG", OK_AC = "OK", EVENODD_AC = "EVEN-ODD";
+	static final String AC_AC = "ALLCLEAR";
 
 	public SudokuBoard(int board_size) {
 		boardSize = board_size;
