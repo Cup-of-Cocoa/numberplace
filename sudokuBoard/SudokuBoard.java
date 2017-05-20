@@ -12,6 +12,7 @@ import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -27,8 +28,9 @@ public class SudokuBoard extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 
-	JPanel numbersPanel, boardPanel, modePanel;
+	JPanel numbersPanel, boardPanel, modePanel, checkPanel;
 	JRadioButton  basicModeButton, diagModeButton, evenOddModeButton, zigzagModeButton;
+	JCheckBox solveAllCheckBox;
 	JButton spaceButton, evenOddButton, allClearButton, okButton;
 	List<JRadioButton> numberBoard = new ArrayList<JRadioButton>();
 	ButtonGroup boardButtonGroup = new ButtonGroup(), modeButtonGroup;
@@ -149,6 +151,10 @@ public class SudokuBoard extends JFrame implements ActionListener{
 		modePanel.add(evenOddModeButton);
 		modePanel.add(zigzagModeButton);
 		add(modePanel);
+		checkPanel = new JPanel(new GridLayout(1,1));
+		solveAllCheckBox = new JCheckBox("答えをすべて表示する");
+		checkPanel.add(solveAllCheckBox);
+		add(checkPanel);
 		//OKボタンをつくる
 		okButton = new JButton("OK");
 		okButton.addActionListener(this);
@@ -292,7 +298,10 @@ public class SudokuBoard extends JFrame implements ActionListener{
 			}
 			else if (zigzagModeButton.isSelected()) n = new ZigzagNanpureSolver(board);
 			else n = new BasicNanpureSolver(board);
-			n.solveAll();
+			if(solveAllCheckBox.isSelected()) n.solveAll();
+			else {
+				n.solve();
+			}
 		}
 	}
 
