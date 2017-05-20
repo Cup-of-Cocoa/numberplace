@@ -13,7 +13,6 @@ public class Sudoku extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 
 	//予定
-	//２個以上答えがあるときそれをすべて表示のチェックボックスをつくる
 	//大量の定数をEnum型で管理する
 
 	JMenuBar sudokuMenuBar;
