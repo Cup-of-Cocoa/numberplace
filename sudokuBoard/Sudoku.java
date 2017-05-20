@@ -17,7 +17,7 @@ public class Sudoku extends JFrame implements ActionListener{
 	JMenuItem basic, mini;
 	static final int SUDOKU_BOARD_WIDTH = 630, SUDOKU_BOARD_HEIGHT = 400;
 	static final int MINI_SUDOKU_BOARD_WIDTH = 500, MINI_SUDOKU_BOARD_HEIGHT = 350;
-	static final int MINI_SIZE = 6, BASIC_SIZE = 9;
+	static final int MINI_SIZE = 6, BASIC_SIZE = 9, INITIAL_SELECTED_BOX = 0;
 	private SudokuBoard basicBoard = new SudokuBasicBoard();
 	private SudokuBoard miniBoard = new SudokuMiniBoard();
 
