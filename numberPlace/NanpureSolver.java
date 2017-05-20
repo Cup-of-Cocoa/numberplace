@@ -6,7 +6,6 @@ public abstract class NanpureSolver {
 	int[] board;
 	int size;
 	ArrayList<Integer> emptyBoxList = new ArrayList<Integer>();
-	boolean isValidBoard = true;
 
 	public NanpureSolver(){}
 
@@ -42,7 +41,7 @@ public abstract class NanpureSolver {
 	}
 
 	public void solveAll(){
-		if(!boardIsFull() && isValidBoard) {
+		if(!boardIsFull()) {
 			for(int n = 1; n <= size; n++){
 				int i = emptyBoxList.get(0);
 				if(isPlaceable(n, i)) {
@@ -61,7 +60,7 @@ public abstract class NanpureSolver {
 	}
 
 	public int solve(){
-		if(!boardIsFull() && isValidBoard) {
+		if(!boardIsFull()) {
 			for(int n = 1; n <= size; n++){
 				int i = emptyBoxList.get(0);
 				if(isPlaceable(n, i)) {
