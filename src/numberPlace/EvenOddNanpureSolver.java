@@ -17,7 +17,7 @@ public class EvenOddNanpureSolver extends NanpureSolver{
 			catch(NumberFormatException e) {
 				System.out.println("invalid input: not integer");
 			}
-			if (this.board[i] == 0) emptyBoxList.add(i);
+			if (this.board[i] == 0) emptyBoxIndexList.add(i);
 		}
 		for (int i = 0; i < even_oddList.size(); i++) {
 			if(this.board[even_oddList.get(i)]%2 == 1) {

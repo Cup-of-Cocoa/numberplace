@@ -16,5 +16,5 @@ public class BasicNanpureSolver extends NanpureSolver{
 		}
 		return true;
 	}
-	
+
 }
