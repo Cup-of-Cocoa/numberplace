@@ -39,16 +39,16 @@ public class SudokuBoard extends JFrame implements ActionListener{
 	int boardSize;
 	String[] board;
 
-	final ImageIcon box_unselected = new ImageIcon(SudokuBoard.class.getResource("../images/box_unselected.png"));
-	final ImageIcon box_selected = new ImageIcon(SudokuBoard.class.getResource("../images/box_selected.png"));
-	final ImageIcon dbox_unselected1 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_unselected1.png"));
-	final ImageIcon dbox_selected1 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_selected1.png"));
-	final ImageIcon dbox_unselected2 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_unselected2.png"));
-	final ImageIcon dbox_selected2 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_selected2.png"));
-	final ImageIcon dbox_unselected3 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_unselected3.png"));
-	final ImageIcon dbox_selected3 = new ImageIcon(SudokuBoard.class.getResource("../images/dbox_selected3.png"));
-	final ImageIcon eobox_unselected = new ImageIcon(SudokuBoard.class.getResource("../images/eobox_unselected.png"));
-	final ImageIcon eobox_selected = new ImageIcon(SudokuBoard.class.getResource("../images/eobox_selected.png"));
+	final ImageIcon box_unselected = new ImageIcon(this.getClass().getResource("box_unselected.png"));
+	final ImageIcon box_selected = new ImageIcon(this.getClass().getResource("box_selected.png"));
+	final ImageIcon dbox_unselected1 = new ImageIcon(this.getClass().getResource("dbox_unselected1.png"));
+	final ImageIcon dbox_selected1 = new ImageIcon(this.getClass().getResource("dbox_selected1.png"));
+	final ImageIcon dbox_unselected2 = new ImageIcon(this.getClass().getResource("dbox_unselected2.png"));
+	final ImageIcon dbox_selected2 = new ImageIcon(this.getClass().getResource("dbox_selected2.png"));
+	final ImageIcon dbox_unselected3 = new ImageIcon(this.getClass().getResource("dbox_unselected3.png"));
+	final ImageIcon dbox_selected3 = new ImageIcon(this.getClass().getResource("dbox_selected3.png"));
+	final ImageIcon eobox_unselected = new ImageIcon(this.getClass().getResource("eobox_unselected.png"));
+	final ImageIcon eobox_selected = new ImageIcon(this.getClass().getResource("eobox_selected.png"));
 	final int iconWidth = box_unselected.getIconWidth();
 	final int iconHeight = box_unselected.getIconHeight();
 	final int num_of_Buttons = boardSize+3;//EMPTY, E-O, ALLCLEARのボタン
